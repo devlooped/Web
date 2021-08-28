@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Devlooped.Tests</AssemblyName>
+    <RootNamespace>Devlooped</RootNamespace>
+    <NoWarn>xUnit1013</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageReference Include="Microsoft.Xml.SgmlReader" Version="1.8.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="Xunit.Abstractions" />
+    <Using Include="Devlooped.Xml.Css" />
+    <Import Include="@(Using)" />
+    <!--
+    <AdditionalFiles Include="page.html" SourceItemType="Html" />
+    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="SourceItemType" />
+    -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Css\Css.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="page.html" Generator="MSBuild:ForceCompile" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CoreCompileDependsOn>ForceCompile;$(CoreCompileDependsOn)</CoreCompileDependsOn>
+  </PropertyGroup>
+  
+  <Target Name="ForceCompile" BeforeTargets="CoreCompile"
+          Inputs="page.html" Outputs="$(BaseIntermediateOutputPath)page.g.cs">
+    <WriteLinesToFile File="$(BaseIntermediateOutputPath)page.g.cs" Lines="" />
+    <ItemGroup>
+      <Compile Include="$(BaseIntermediateOutputPath)page.g.cs" />
+    </ItemGroup>
+  </Target>
+
+</Project>
