@@ -5,11 +5,12 @@
     <PackageId>Devlooped.Xml.Css</PackageId>
     <AssemblyName>Devlooped.Xml.Css</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
-    <ProjectUrl>https://clarius.org/css</ProjectUrl>
+    <PackageProjectUrl>https://clarius.org/css</PackageProjectUrl>
+    <Description>CSS3 selectors for XLinq</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="IsExternalInit" Version="1.0.1" PrivateAssets="all" />
     <PackageReference Include="NuGetizer" Version="0.7.4" PrivateAssets="all" />
     <PackageReference Include="Superpower" Version="2.3.0" />
