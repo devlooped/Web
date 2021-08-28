@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/github/license/devlooped/css.svg?color=blue)](https://github.com/devlooped/css/blob/main/license.txt)
 [![Build](https://github.com/devlooped/css/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/css/actions)
 
-Implements CSS3 selectors for XLinq.
+Implements CSS selectors for XLinq.
 
 
 # Dogfooding
