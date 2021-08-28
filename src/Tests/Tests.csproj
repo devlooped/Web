@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Devlooped.Tests</AssemblyName>
     <RootNamespace>Devlooped</RootNamespace>
     <NoWarn>xUnit1013</NoWarn>
