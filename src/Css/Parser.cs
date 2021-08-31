@@ -82,7 +82,7 @@ class Parser
             .Or(Span.EqualTo("first-child"))
             .Or(Span.EqualTo("last-child"))
             .Or(Span.EqualTo("only-child"))
-         select identifier.ToStringValue() switch 
+         select identifier.ToStringValue() switch
          {
              "checked" => CheckedSelector.Default,
              "first-child" => FirstChildSelector.Default,
