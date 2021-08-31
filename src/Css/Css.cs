@@ -156,6 +156,19 @@ record CheckedSelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[@selected or @checked]");
 }
 
+record FirstChildSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new FirstChildSelector();
+    FirstChildSelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[not(preceding-sibling::*)]");
+}
+
+record LastChildSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new LastChildSelector();
+    LastChildSelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[not(following-sibling::*)]");
+}
 
 enum Combinator
 {

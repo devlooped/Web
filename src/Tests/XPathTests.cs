@@ -31,7 +31,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData(".container", "Hello1234")]
     [InlineData(".main", "Hello1234")]
     [InlineData("div[role=menuitem]", "File Archivo Edit")]
-    [InlineData("div[role]", "Warning Standard File Archivo Edit")]
+    [InlineData("div[role]", "Warning Standard File Archivo Edit Footer")]
     [InlineData("div[role][lang|=es]", "Archivo")]
     [InlineData("[tags~=flow]", "File Edit")]
     [InlineData("[tags~=selected]", "File")]
@@ -42,6 +42,8 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div[role=alert]", "Warning")]
     [InlineData("input:checked", " ")]
     [InlineData("option:checked", "second")]
+    [InlineData("div:first-child", "Warning Hello")]
+    [InlineData("div:last-child", "Footer")]
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")
