@@ -14,7 +14,7 @@ public record XPathTests(ITestOutputHelper Console)
     [Theory]
     public void ToXPath(string css, string xpath)
     {
-        var result = Converter.CssToXPath(Parser.Parse(css));
+        var result = Parser.Parse(css).ToXPath();
         if (result != xpath)
             Console.WriteLine(result);
 
