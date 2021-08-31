@@ -5,6 +5,10 @@ using System.Xml.XPath;
 
 namespace Devlooped.Xml.Css;
 
+/// <summary>
+/// Provides extension methods for <see cref="XNode"/> that allow selecting 
+/// nodes using CSS selector expressions.
+/// </summary>
 [EditorBrowsable(EditorBrowsableState.Never)]
 public static class CssSelectorExtensions
 {
@@ -17,8 +21,7 @@ public static class CssSelectorExtensions
     public static XElement CssSelectElement(this XNode node, string expression)
     {
         var selector = Parser.Parse(expression);
-        var xpath = Converter.CssToXPath(selector);
-        return node.XPathSelectElement(xpath);
+        return node.XPathSelectElement(selector.ToXPath());
     }
 
     /// <summary>
@@ -32,7 +35,6 @@ public static class CssSelectorExtensions
     public static IEnumerable<XElement> CssSelectElements(this XNode node, string expression)
     {
         var selector = Parser.Parse(expression);
-        var xpath = Converter.CssToXPath(selector);
-        return node.XPathSelectElements(xpath);
+        return node.XPathSelectElements(selector.ToXPath());
     }
 }

@@ -40,6 +40,8 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div[role*=nu]", "Standard File Archivo Edit")]
     [InlineData("div.menuitem", "File Archivo Edit")]
     [InlineData("div[role=alert]", "Warning")]
+    [InlineData("input:checked", " ")]
+    [InlineData("option:checked", "second")]
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")

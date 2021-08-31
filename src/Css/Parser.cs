@@ -76,9 +76,15 @@ class Parser
              value.Length == 0 ? null : new string(value), matching))
         .Named("attribute selector");
 
+    internal static TextParser<SimpleSelector> CheckedSelector { get; } =
+        (from start in Character.EqualTo(':')
+         from identifier in Span.EqualTo("checked")
+         select Css.CheckedSelector.Default)
+        .Named("checked pseudo selector");
+
     internal static TextParser<SimpleSelector[]> SimpleSelectorSequence { get; } =
         from start in UniversalSelector.Or(TypeSelector).Cast<SimpleSelector, SimpleSelector?>().OptionalOrDefault()
-        from rest in ClassSelector.Or(IdSelector).Or(AttributeSelector)
+        from rest in ClassSelector.Or(IdSelector).Or(AttributeSelector).Or(CheckedSelector)
                     .Many()
         select (start == null && rest.Length == 0) ?
             Array.Empty<SimpleSelector>() :
