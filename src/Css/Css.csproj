@@ -7,7 +7,7 @@
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <PackageProjectUrl>https://clarius.org/css</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Description>CSS selectors for XLinq</Description>
+    <Description>CSS selectors for XLinq, aka Linq to Css</Description>
   </PropertyGroup>
 
   <ItemGroup>

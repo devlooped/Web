@@ -1,4 +1,4 @@
-![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/img/icon-32.png) Css to XLinq
+![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/img/icon-32.png) Linq to Css
 ============
 
 [![Version](https://img.shields.io/nuget/vpre/Devlooped.Xml.Css.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Xml.Css)
