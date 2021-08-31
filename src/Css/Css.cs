@@ -170,6 +170,13 @@ record LastChildSelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[not(following-sibling::*)]");
 }
 
+record OnlyChildSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new OnlyChildSelector();
+    OnlyChildSelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[not(preceding-sibling::*) and not(following-sibling::*)]");
+}
+
 enum Combinator
 {
     None,
