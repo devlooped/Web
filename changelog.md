@@ -1,5 +1,9 @@
 
 
+## [v0.1.1](https://github.com/devlooped/css/tree/v0.1.1) (2021-08-31)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.1.0...v0.1.1)
+
 ## [v0.1.0](https://github.com/devlooped/css/tree/v0.1.0) (2021-08-31)
 
 [Full Changelog](https://github.com/devlooped/css/compare/23dbc1d83526813ee629825930bdda91276be196...v0.1.0)
