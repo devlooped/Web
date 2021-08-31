@@ -8,6 +8,27 @@
 
 Implements CSS selectors for XLinq.
 
+# Usage
+
+```csharp
+using Devlooped.Xml.Css;
+
+var page = XDocument.Load("page.xhtml")
+IEnumerable<XElement> elements = page.CssSelectElements("div.menuitem");
+
+XElement title = page.CssSelectElement("div[role=alert]");
+```
+
+At the moment, supports the following CSS selector features: 
+
+- [Type selector](https://www.w3.org/TR/selectors-3/#type-selectors)
+- [Universal selector](https://www.w3.org/TR/selectors-3/#universal-selector)
+- [Attribute selector](https://www.w3.org/TR/selectors-3/#attribute-selectors)
+- [Class selector](https://www.w3.org/TR/selectors-3/#class-html)
+- [ID selector](https://www.w3.org/TR/selectors-3/#id-selectors)
+
+And all [combinators](https://www.w3.org/TR/selectors-3/#combinators)
+
 
 # Dogfooding
 

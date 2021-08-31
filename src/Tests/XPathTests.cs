@@ -31,13 +31,15 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData(".container", "Hello1234")]
     [InlineData(".main", "Hello1234")]
     [InlineData("div[role=menuitem]", "File Archivo Edit")]
-    [InlineData("div[role]", "Standard File Archivo Edit")]
+    [InlineData("div[role]", "Warning Standard File Archivo Edit")]
     [InlineData("div[role][lang|=es]", "Archivo")]
     [InlineData("[tags~=flow]", "File Edit")]
     [InlineData("[tags~=selected]", "File")]
     [InlineData("div[role^=menu]", "Standard File Archivo Edit")]
     [InlineData("div[role$=item]", "File Archivo Edit")]
     [InlineData("div[role*=nu]", "Standard File Archivo Edit")]
+    [InlineData("div.menuitem", "File Archivo Edit")]
+    [InlineData("div[role=alert]", "Warning")]
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")
