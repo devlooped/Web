@@ -96,15 +96,13 @@ class Parser
          from identifier in Span.EqualTo("checked")
             .Or(Span.EqualTo("only-child"))
             .Or(Span.EqualTo("empty"))
-             // This matching of common root string value to later select looks hack-ish
-            .Or(Span.EqualTo("first-").Or(Span.EqualTo("last-"))
-                .Then(x => Span.EqualTo("of-type").Or(Span.EqualTo("child"))
-                .Select(s => new TextSpan(x.ToStringValue() + s.ToStringValue()))))
-             // Perhaps we should switch to a tokenizer-based parsing for the pseudo classes?
-             .Or(Character.EqualTo('n')
-                .Then(x => Span.EqualTo("ot").Or(Span.EqualTo("th-of-type"))
-                .Select(s => new TextSpan("n" + s.ToStringValue()))))
-             //.Or(Span.EqualTo("has"))
+            .Or(Span.EqualTo("first-child").Try())
+            .Or(Span.EqualTo("last-child").Try())
+            .Or(Span.EqualTo("first-of-type").Try())
+            .Or(Span.EqualTo("last-of-type").Try())
+            .Or(Span.EqualTo("not").Try())
+            .Or(Span.EqualTo("nth-of-type").Try())
+            //.Or(Span.EqualTo("has"))
          from argument in PseudoArgumentSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
          {
