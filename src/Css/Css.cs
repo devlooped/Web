@@ -18,15 +18,36 @@ class Selector : List<CombinedSelector>
     public string ToXPath()
     {
         var builder = new StringBuilder();
-
         foreach (var step in this)
-        {
-            builder.Append(ToAxis(step.Combinator));
-            foreach (var selector in step.SelectorSequence)
-                selector.Append(builder);
-        }
+            step.Append(builder);
 
         return builder.ToString();
+    }
+}
+
+abstract record BaseSelector
+{
+    public abstract void Append(StringBuilder builder);
+}
+
+record CompositeSelector(SimpleSelector[] Sequence) : BaseSelector
+{
+    public static CompositeSelector Empty { get; } = new CompositeSelector(Array.Empty<SimpleSelector>());
+    public static implicit operator CompositeSelector(SimpleSelector[] sequence) => new CompositeSelector(sequence);
+
+    public override void Append(StringBuilder builder)
+    {
+        foreach (var selector in Sequence)
+            selector.Append(builder);
+    }
+}
+
+record CombinedSelector(Combinator Combinator, CompositeSelector Selector) : BaseSelector
+{
+    public override void Append(StringBuilder builder)
+    {
+        builder.Append(ToAxis(Combinator));
+        Selector.Append(builder);
     }
 
     string ToAxis(Combinator combinator) => combinator switch
@@ -40,12 +61,7 @@ class Selector : List<CombinedSelector>
     };
 }
 
-record CombinedSelector(Combinator Combinator, SimpleSelector[] SelectorSequence);
-
-abstract record SimpleSelector
-{
-    public abstract void Append(StringBuilder builder);
-}
+abstract record SimpleSelector : BaseSelector;
 
 record TypeSelector(string Name, string? NamespacePrefix = default) : SimpleSelector
 {
@@ -205,13 +221,23 @@ record LastOfTypeSelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[last()]");
 }
 
-record NegationSelector(SimpleSelector Selector) : SimpleSelector
+record NegationSelector(BaseSelector Selector) : SimpleSelector
 {
     public override void Append(StringBuilder builder)
     {
         builder.Append("[not(self::node()");
         Selector.Append(builder);
         builder.Append(")]");
+    }
+}
+
+record HasSelector(BaseSelector Selector) : SimpleSelector
+{
+    public override void Append(StringBuilder builder)
+    {
+        builder.Append("[count(");
+        Selector.Append(builder);
+        builder.Append(" > 0]");
     }
 }
 

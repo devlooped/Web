@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
+using Superpower;
 
 namespace Devlooped.Tests;
 
@@ -48,12 +49,21 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData(":empty", "   ")] // head + 3 inputs
     [InlineData("div span:first-of-type", "1")]
     [InlineData("div span:last-of-type", "4")]
+    [InlineData("span:not([id])", "4 5")]
     [InlineData("div[role^=menu]:not([role=menuitem])", "Standard")]
     [InlineData("div[role=menuitem]:nth-of-type(2)", "Archivo")]
+    //[InlineData("div:has(div[title])", "Hello 1 2 3 4")]
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")
             .CssSelectElements(expression)
             .Select(x => x.Value)));
 
+    [Fact]
+    public void ParseSelector()
+    {
+        var div = Parser.SimpleSelectorSequence.Parse("div[title]");
+
+        Assert.NotNull(div);
+    }
 }

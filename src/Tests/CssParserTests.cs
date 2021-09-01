@@ -58,7 +58,7 @@ public record CssParserTests(ITestOutputHelper Console)
     [Fact]
     public void CanParseTypeAndClassSequence()
     {
-        var sequence = Parser.SimpleSelectorSequence.Parse("h1.title");
+        var sequence = Parser.SimpleSelectorSequence.Parse("h1.title").Sequence;
 
         Assert.Equal(2, sequence.Length);
         Assert.IsType<TypeSelector>(sequence[0]);
@@ -71,7 +71,7 @@ public record CssParserTests(ITestOutputHelper Console)
     [Fact]
     public void CanParseUniversalAndIdSequence()
     {
-        var sequence = Parser.SimpleSelectorSequence.Parse("*#foo");
+        var sequence = Parser.SimpleSelectorSequence.Parse("*#foo").Sequence;
 
         Assert.Equal(2, sequence.Length);
         Assert.IsType<UniversalSelector>(sequence[0]);
@@ -83,7 +83,7 @@ public record CssParserTests(ITestOutputHelper Console)
     [Fact]
     public void CanParseIdSequenceAlone()
     {
-        var sequence = Parser.SimpleSelectorSequence.Parse("#foo");
+        var sequence = Parser.SimpleSelectorSequence.Parse("#foo").Sequence;
 
         Assert.Equal(2, sequence.Length);
         Assert.IsType<UniversalSelector>(sequence[0]);
@@ -129,7 +129,7 @@ public record CssParserTests(ITestOutputHelper Console)
         Assert.Equal(5, selector.Count);
 
         Assert.Equal(Combinator.None, selector[0].Combinator);
-        var h1 = selector[0].SelectorSequence;
+        var h1 = selector[0].Selector.Sequence;
 
         Assert.IsType<TypeSelector>(h1[0]);
         Assert.IsType<ClassSelector>(h1[1]);
@@ -139,7 +139,7 @@ public record CssParserTests(ITestOutputHelper Console)
         var p = selector[1];
 
         Assert.Equal(Combinator.Descendant, p.Combinator);
-        Assert.IsType<TypeSelector>(p.SelectorSequence[0]);
+        Assert.IsType<TypeSelector>(p.Selector.Sequence[0]);
     }
 
     [Fact]
@@ -159,12 +159,12 @@ public record CssParserTests(ITestOutputHelper Console)
         var selector = Parser.Selector.Parse(@".foo\+bar");
 
         Assert.Single(selector);
-        Assert.Equal(2, selector[0].SelectorSequence.Length);
+        Assert.Equal(2, selector[0].Selector.Sequence.Length);
 
-        Assert.IsType<UniversalSelector>(selector[0].SelectorSequence[0]);
-        Assert.IsType<ClassSelector>(selector[0].SelectorSequence[1]);
+        Assert.IsType<UniversalSelector>(selector[0].Selector.Sequence[0]);
+        Assert.IsType<ClassSelector>(selector[0].Selector.Sequence[1]);
 
-        var bar = (ClassSelector)selector[0].SelectorSequence[1];
+        var bar = (ClassSelector)selector[0].Selector.Sequence[1];
 
         Assert.Equal("foo+bar", bar.Name);
     }

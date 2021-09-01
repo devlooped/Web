@@ -78,16 +78,16 @@ class Parser
         .Named("attribute selector");
 
     internal static TextParser<SimpleSelector> PositionSelector { get; } =
-        from number in Character.Numeric.Many()
+        from number in Character.Numeric.AtLeastOnce()
         select (SimpleSelector)new PositionSelector(new string(number));
 
-    internal static TextParser<SimpleSelector?> PseudoArgumentSelector { get; } =
+    internal static TextParser<BaseSelector?> PseudoArgumentSelector { get; } =
         from _ in Character.EqualTo('(')
-        from selector in ClassSelector
-                        .Or(IdSelector)
-                        .Or(AttributeSelector)
-                        .Or(PseudoSelector)
-                        .Or(PositionSelector)
+        from selector in ClassSelector.Cast<SimpleSelector, BaseSelector>()
+                        .Or(IdSelector.Cast<SimpleSelector, BaseSelector>())
+                        .Or(AttributeSelector.Cast<SimpleSelector, BaseSelector>())
+                        .Or(PseudoSelector.Cast<SimpleSelector, BaseSelector>())
+                        .Or(PositionSelector.Cast<SimpleSelector, BaseSelector>())
         from __ in Character.EqualTo(')')
         select selector;
 
@@ -104,6 +104,7 @@ class Parser
              .Or(Character.EqualTo('n')
                 .Then(x => Span.EqualTo("ot").Or(Span.EqualTo("th-of-type"))
                 .Select(s => new TextSpan("n" + s.ToStringValue()))))
+             //.Or(Span.EqualTo("has"))
          from argument in PseudoArgumentSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
          {
@@ -115,12 +116,13 @@ class Parser
              "first-of-type" => FirstOfTypeSelector.Default,
              "last-of-type" => LastOfTypeSelector.Default,
              "not" => new NegationSelector(argument),
-             "nth-of-type" => argument,
+             "nth-of-type" => (SimpleSelector)argument,
+             //"has" => new HasSelector(argument),
              _ => throw new NotSupportedException()
          })
-        .Named("checked pseudo selector");
+        .Named("pseudo selector");
 
-    internal static TextParser<SimpleSelector[]> SimpleSelectorSequence { get; } =
+    internal static TextParser<CompositeSelector> SimpleSelectorSequence { get; } =
         from start in UniversalSelector.Or(TypeSelector).Cast<SimpleSelector, SimpleSelector?>().OptionalOrDefault()
         from rest in ClassSelector
                         .Or(IdSelector)
@@ -128,7 +130,7 @@ class Parser
                         .Or(PseudoSelector)
                     .Many()
         select (start == null && rest.Length == 0) ?
-            Array.Empty<SimpleSelector>() :
+            CompositeSelector.Empty :
             new[] { start ?? Css.UniversalSelector.Default }.Concat(rest).ToArray();
 
     internal static TextParser<Combinator?> CombinatorParser { get; } =
@@ -147,9 +149,9 @@ class Parser
         from _ in Character.WhiteSpace.IgnoreMany()
         from sequence in SimpleSelectorSequence
         select
-            (combinator == null && sequence.Length == 0) ?
+            (combinator == null && sequence.Sequence.Length == 0) ?
             null :
-            (combinator == null && sequence.Length > 0) ?
+            (combinator == null && sequence.Sequence.Length > 0) ?
             // Omitted combinator is interpreted as a // according to spec.
             new CombinedSelector(Combinator.Descendant, sequence) :
             new CombinedSelector((Combinator)combinator, sequence);
@@ -159,7 +161,7 @@ class Parser
         from _ in Character.WhiteSpace.IgnoreMany()
         from steps in SelectorStep.ManyDelimitedBy(Span.WhiteSpace)
         select new Selector(
-            start.Length == 0 ? new[] { Css.UniversalSelector.Default } : start,
+            start.Sequence.Length == 0 ? new[] { Css.UniversalSelector.Default } : start.Sequence,
             steps.Where(x => x != null));
 
     public static Selector Parse(string expression) =>
