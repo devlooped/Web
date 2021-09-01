@@ -83,11 +83,12 @@ class Parser
 
     internal static TextParser<BaseSelector?> PseudoArgumentSelector { get; } =
         from _ in Character.EqualTo('(')
-        from selector in ClassSelector.Cast<SimpleSelector, BaseSelector>()
-                        .Or(IdSelector.Cast<SimpleSelector, BaseSelector>())
-                        .Or(AttributeSelector.Cast<SimpleSelector, BaseSelector>())
-                        .Or(PseudoSelector.Cast<SimpleSelector, BaseSelector>())
-                        .Or(PositionSelector.Cast<SimpleSelector, BaseSelector>())
+        from selector in ClassSelector.Cast<SimpleSelector, BaseSelector>().Try()
+                        .Or(IdSelector.Cast<SimpleSelector, BaseSelector>().Try())
+                        .Or(AttributeSelector.Cast<SimpleSelector, BaseSelector>().Try())
+                        .Or(PseudoSelector.Cast<SimpleSelector, BaseSelector>().Try())
+                        .Or(PositionSelector.Cast<SimpleSelector, BaseSelector>().Try())
+                        .Or(RelativeSelector.ManyDelimitedBy(Character.EqualTo(',')).Select(x => (BaseSelector)new CompositeSelector(x.OfType<BaseSelector>().ToArray())).Try())
         from __ in Character.EqualTo(')')
         select selector;
 
@@ -102,7 +103,7 @@ class Parser
             .Or(Span.EqualTo("last-of-type").Try())
             .Or(Span.EqualTo("not").Try())
             .Or(Span.EqualTo("nth-of-type").Try())
-            //.Or(Span.EqualTo("has"))
+            .Or(Span.EqualTo("has"))
          from argument in PseudoArgumentSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
          {
@@ -115,7 +116,7 @@ class Parser
              "last-of-type" => LastOfTypeSelector.Default,
              "not" => new NegationSelector(argument),
              "nth-of-type" => (SimpleSelector)argument,
-             //"has" => new HasSelector(argument),
+             "has" => new HasSelector(argument),
              _ => throw new NotSupportedException()
          })
         .Named("pseudo selector");
@@ -153,6 +154,18 @@ class Parser
             // Omitted combinator is interpreted as a // according to spec.
             new CombinedSelector(Combinator.Descendant, sequence) :
             new CombinedSelector((Combinator)combinator, sequence);
+
+    internal static TextParser<CombinedSelector?> RelativeSelector { get; } =
+        from combinator in CombinatorParser
+        from _ in Character.WhiteSpace.IgnoreMany()
+        from sequence in SimpleSelectorSequence
+        select
+            (combinator == null && sequence.Sequence.Length == 0) ?
+            null :
+            (combinator == null && sequence.Sequence.Length > 0) ?
+            // Omitted combinator is interpreted as a .// in this case
+            new CombinedSelector(Combinator.None, sequence) :
+            new CombinedSelector(combinator == Combinator.Descendant ? Combinator.None : (Combinator)combinator, sequence);
 
     internal static TextParser<Selector> Selector { get; } =
         from start in SimpleSelectorSequence

@@ -9,7 +9,7 @@ namespace Devlooped.Xml.Css;
 
 class Selector : List<CombinedSelector>
 {
-    public Selector(SimpleSelector[] start, IEnumerable<CombinedSelector> selectors)
+    public Selector(BaseSelector[] start, IEnumerable<CombinedSelector> selectors)
     {
         Add(new CombinedSelector(Combinator.None, start));
         AddRange(selectors);
@@ -30,10 +30,10 @@ abstract record BaseSelector
     public abstract void Append(StringBuilder builder);
 }
 
-record CompositeSelector(SimpleSelector[] Sequence) : BaseSelector
+record CompositeSelector(BaseSelector[] Sequence) : BaseSelector
 {
-    public static CompositeSelector Empty { get; } = new CompositeSelector(Array.Empty<SimpleSelector>());
-    public static implicit operator CompositeSelector(SimpleSelector[] sequence) => new CompositeSelector(sequence);
+    public static CompositeSelector Empty { get; } = new CompositeSelector(Array.Empty<BaseSelector>());
+    public static implicit operator CompositeSelector(BaseSelector[] sequence) => new CompositeSelector(sequence);
 
     public override void Append(StringBuilder builder)
     {
@@ -235,9 +235,37 @@ record HasSelector(BaseSelector Selector) : SimpleSelector
 {
     public override void Append(StringBuilder builder)
     {
-        builder.Append("[count(");
-        Selector.Append(builder);
-        builder.Append(" > 0]");
+        if (Selector is CompositeSelector composite)
+        {
+            if (composite.Sequence.Length == 1)
+            {
+                builder.Append("[count(");
+                Selector.Append(builder);
+                builder.Append(") > 0]");
+            }
+            else if (composite.Sequence.Length > 1)
+            {
+                var first = true;
+                builder.Append("[fn:sum(");
+                foreach (var step in composite.Sequence)
+                {
+                    if (first)
+                        first = false;
+                    else
+                        builder.Append(", ");
+                    builder.Append("count(");
+                    step.Append(builder);
+                    builder.Append(")");
+                }
+                builder.Append(") > 0]");
+            }
+        }
+        else
+        {
+            builder.Append("[count(");
+            Selector.Append(builder);
+            builder.Append(") > 0]");
+        }
     }
 }
 

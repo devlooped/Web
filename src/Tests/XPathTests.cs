@@ -52,12 +52,20 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("span:not([id])", "4 5")]
     [InlineData("div[role^=menu]:not([role=menuitem])", "Standard")]
     [InlineData("div[role=menuitem]:nth-of-type(2)", "Archivo")]
-    //[InlineData("div:has(div[title])", "Hello 1 2 3 4")]
+    [InlineData("p:has(h1)", "Sub-header")]
+    [InlineData("div:has(div[id], span[id=one])", "Hello1234")]
     [Theory]
-    public void EvaluatePageHtml(string expression, string value)
-        => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")
+    public void EvaluatePageHtml(string expression, string expected)
+    {
+        var actual = string.Join(' ', XDocument.Load("page.html")
             .CssSelectElements(expression)
-            .Select(x => x.Value)));
+            .Select(x => x.Value));
+
+        if (!expected.Equals(actual))
+            Console.WriteLine($"{expression} > {Parser.Parse(expression).ToXPath()}");
+
+        Assert.Equal(expected, actual);
+    }
 
     [Fact]
     public void ParseSelector()
