@@ -157,13 +157,13 @@ record ClassSelector(string Name) : SimpleSelector
 {
     // See https://ghostinspector.com/docs/css-xpath-conversion/#classes
     // '[contains(concat(" ",normalize-space(@class)," ")," val ")]'
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append($"[contains(concat(\" \",normalize-space(@class),\" \"),\" {Name} \")]");
 }
 
 record IdSelector(string Id) : SimpleSelector
 {
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append($"[@id=\"{Id}\"]");
 }
 
@@ -171,7 +171,7 @@ record CheckedSelector : SimpleSelector
 {
     public static SimpleSelector Default { get; } = new CheckedSelector();
     CheckedSelector() { }
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[@selected or @checked]");
 }
 
@@ -179,7 +179,7 @@ record FirstChildSelector : SimpleSelector
 {
     public static SimpleSelector Default { get; } = new FirstChildSelector();
     FirstChildSelector() { }
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[not(preceding-sibling::*)]");
 }
 
@@ -187,7 +187,7 @@ record LastChildSelector : SimpleSelector
 {
     public static SimpleSelector Default { get; } = new LastChildSelector();
     LastChildSelector() { }
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[not(following-sibling::*)]");
 }
 
@@ -195,7 +195,7 @@ record OnlyChildSelector : SimpleSelector
 {
     public static SimpleSelector Default { get; } = new OnlyChildSelector();
     OnlyChildSelector() { }
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[not(preceding-sibling::*) and not(following-sibling::*)]");
 }
 
@@ -203,7 +203,7 @@ record EmptySelector : SimpleSelector
 {
     public static SimpleSelector Default { get; } = new EmptySelector();
     EmptySelector() { }
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[not(*) and not(normalize-space())]");
 }
 
@@ -271,7 +271,7 @@ record HasSelector(BaseSelector Selector) : SimpleSelector
 
 record PositionSelector(string Position) : SimpleSelector
 {
-    public override void Append(StringBuilder builder) 
+    public override void Append(StringBuilder builder)
         => builder.Append("[").Append(Position).Append("]");
 }
 
