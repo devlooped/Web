@@ -21,7 +21,8 @@ public static class CssSelectorExtensions
     public static XElement CssSelectElement(this XNode node, string expression)
     {
         var selector = Parser.Parse(expression);
-        return node.XPathSelectElement(selector.ToXPath());
+        var xpath = selector.ToXPath();
+        return node.XPathSelectElement(xpath);
     }
 
     /// <summary>
@@ -35,6 +36,7 @@ public static class CssSelectorExtensions
     public static IEnumerable<XElement> CssSelectElements(this XNode node, string expression)
     {
         var selector = Parser.Parse(expression);
-        return node.XPathSelectElements(selector.ToXPath());
+        var xpath = selector.ToXPath();
+        return node.XPathSelectElements(xpath);
     }
 }

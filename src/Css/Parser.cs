@@ -77,6 +77,15 @@ class Parser
              value.Length == 0 ? null : new string(value), matching))
         .Named("attribute selector");
 
+    internal static TextParser<SimpleSelector?> NegationSelector { get; } =
+        from _ in Character.EqualTo('(')
+        from selector in ClassSelector
+                        .Or(IdSelector)
+                        .Or(AttributeSelector)
+                        .Or(PseudoSelector)
+        from __ in Character.EqualTo(')')
+        select selector;
+
     internal static TextParser<SimpleSelector> PseudoSelector { get; } =
         (from start in Character.EqualTo(':')
          from identifier in Span.EqualTo("checked")
@@ -85,6 +94,8 @@ class Parser
             .Or(Span.EqualTo("first-").Or(Span.EqualTo("last-"))
                 .Then(x => Span.EqualTo("of-type").Or(Span.EqualTo("child"))
                 .Select(s => new TextSpan(x.ToStringValue() + s.ToStringValue()))))
+             .Or(Span.EqualTo("not"))
+         from negation in NegationSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
          {
              "checked" => CheckedSelector.Default,
@@ -94,6 +105,8 @@ class Parser
              "last-child" => LastChildSelector.Default,
              "first-of-type" => FirstOfTypeSelector.Default,
              "last-of-type" => LastOfTypeSelector.Default,
+             "not" when negation == null => throw new NotSupportedException(":not() must be followed by a simple selector"),
+             "not" => new NegationSelector(negation),
              _ => throw new NotSupportedException()
          })
         .Named("checked pseudo selector");

@@ -198,6 +198,16 @@ record LastOfTypeSelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[last()]");
 }
 
+record NegationSelector(SimpleSelector Selector) : SimpleSelector
+{
+    public override void Append(StringBuilder builder)
+    {
+        builder.Append("[not(self::node()");
+        Selector.Append(builder);
+        builder.Append(")]");
+    }
+}
+
 enum Combinator
 {
     None,
