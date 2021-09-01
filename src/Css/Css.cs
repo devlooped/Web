@@ -177,6 +177,14 @@ record OnlyChildSelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[not(preceding-sibling::*) and not(following-sibling::*)]");
 }
 
+record EmptySelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new EmptySelector();
+    EmptySelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[not(*) and not(normalize-space())]");
+}
+
+
 enum Combinator
 {
     None,

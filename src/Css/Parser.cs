@@ -82,12 +82,14 @@ class Parser
             .Or(Span.EqualTo("first-child"))
             .Or(Span.EqualTo("last-child"))
             .Or(Span.EqualTo("only-child"))
+            .Or(Span.EqualTo("empty"))
          select identifier.ToStringValue() switch
          {
              "checked" => CheckedSelector.Default,
              "first-child" => FirstChildSelector.Default,
              "last-child" => LastChildSelector.Default,
              "only-child" => OnlyChildSelector.Default,
+             "empty" => EmptySelector.Default,
              _ => throw new NotSupportedException()
          })
         .Named("checked pseudo selector");
