@@ -46,6 +46,8 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div:last-child", "Footer")]
     [InlineData("h1:only-child", "Sub-header")]
     [InlineData(":empty", "   ")] // head + 3 inputs
+    [InlineData("div span:first-of-type", "1")]
+    [InlineData("div span:last-of-type", "4")] // head + 3 inputs
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")

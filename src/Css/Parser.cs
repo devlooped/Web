@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Superpower;
+using Superpower.Model;
 using Superpower.Parsers;
 
 namespace Devlooped.Xml.Css;
@@ -79,17 +80,20 @@ class Parser
     internal static TextParser<SimpleSelector> PseudoSelector { get; } =
         (from start in Character.EqualTo(':')
          from identifier in Span.EqualTo("checked")
-            .Or(Span.EqualTo("first-child"))
-            .Or(Span.EqualTo("last-child"))
             .Or(Span.EqualTo("only-child"))
             .Or(Span.EqualTo("empty"))
+            .Or(Span.EqualTo("first-").Or(Span.EqualTo("last-"))
+                .Then(x => Span.EqualTo("of-type").Or(Span.EqualTo("child"))
+                .Select(s => new TextSpan(x.ToStringValue() + s.ToStringValue()))))
          select identifier.ToStringValue() switch
          {
              "checked" => CheckedSelector.Default,
-             "first-child" => FirstChildSelector.Default,
-             "last-child" => LastChildSelector.Default,
              "only-child" => OnlyChildSelector.Default,
              "empty" => EmptySelector.Default,
+             "first-child" => FirstChildSelector.Default,
+             "last-child" => LastChildSelector.Default,
+             "first-of-type" => FirstOfTypeSelector.Default,
+             "last-of-type" => LastOfTypeSelector.Default,
              _ => throw new NotSupportedException()
          })
         .Named("checked pseudo selector");

@@ -31,6 +31,9 @@ At the moment, supports the following CSS selector features:
     * [:first-child](https://www.w3.org/TR/selectors-3/#first-child-pseudo)
     * [:last-child](https://www.w3.org/TR/selectors-3/#last-child-pseudo)
     * [:only-child](https://www.w3.org/TR/selectors-3/#only-child-pseudo)
+    * [:empty](https://www.w3.org/TR/selectors-3/#empty-pseudo)
+    * [:first-of-type](https://www.w3.org/TR/selectors-3/#first-of-type-pseudo)
+    * [:last-of-type](https://www.w3.org/TR/selectors-3/#last-of-type-pseudo)
 
 And all [combinators](https://www.w3.org/TR/selectors-3/#combinators)
 

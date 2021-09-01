@@ -184,6 +184,19 @@ record EmptySelector : SimpleSelector
     public override void Append(StringBuilder builder) => builder.Append("[not(*) and not(normalize-space())]");
 }
 
+record FirstOfTypeSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new FirstOfTypeSelector();
+    FirstOfTypeSelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[1]");
+}
+
+record LastOfTypeSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new LastOfTypeSelector();
+    LastOfTypeSelector() { }
+    public override void Append(StringBuilder builder) => builder.Append("[last()]");
+}
 
 enum Combinator
 {
