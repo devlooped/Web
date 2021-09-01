@@ -1,5 +1,20 @@
 
 
+## [v0.2.0](https://github.com/devlooped/css/tree/v0.2.0) (2021-09-01)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.1.1...v0.2.0)
+
+:sparkles: Implemented enhancements:
+
+- Add :has pseudo-class support [\#12](https://github.com/devlooped/css/issues/12)
+- Add :nth-of-type pseudo class [\#11](https://github.com/devlooped/css/issues/11)
+- Add :not pseudo-class [\#10](https://github.com/devlooped/css/issues/10)
+- Add :first-of-type and :last-of-type pseudo classes [\#9](https://github.com/devlooped/css/issues/9)
+- Add :empty pseudo-class support [\#8](https://github.com/devlooped/css/issues/8)
+- Add :only-child pseudo-class selector [\#7](https://github.com/devlooped/css/issues/7)
+- Add :first-child and :last-child pseudo-class selectors [\#6](https://github.com/devlooped/css/issues/6)
+- Add support for :checked pseudo-class [\#5](https://github.com/devlooped/css/issues/5)
+
 ## [v0.1.1](https://github.com/devlooped/css/tree/v0.1.1) (2021-08-31)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v0.1.0...v0.1.1)
