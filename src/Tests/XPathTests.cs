@@ -49,6 +49,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div span:first-of-type", "1")]
     [InlineData("div span:last-of-type", "4")]
     [InlineData("div[role^=menu]:not([role=menuitem])", "Standard")]
+    [InlineData("div[role=menuitem]:nth-of-type(2)", "Archivo")]
     [Theory]
     public void EvaluatePageHtml(string expression, string value)
         => Assert.Equal(value, string.Join(' ', XDocument.Load("page.html")

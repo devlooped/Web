@@ -77,12 +77,17 @@ class Parser
              value.Length == 0 ? null : new string(value), matching))
         .Named("attribute selector");
 
-    internal static TextParser<SimpleSelector?> NegationSelector { get; } =
+    internal static TextParser<SimpleSelector> PositionSelector { get; } =
+        from number in Character.Numeric.Many()
+        select (SimpleSelector)new PositionSelector(new string(number));
+
+    internal static TextParser<SimpleSelector?> PseudoArgumentSelector { get; } =
         from _ in Character.EqualTo('(')
         from selector in ClassSelector
                         .Or(IdSelector)
                         .Or(AttributeSelector)
                         .Or(PseudoSelector)
+                        .Or(PositionSelector)
         from __ in Character.EqualTo(')')
         select selector;
 
@@ -91,11 +96,15 @@ class Parser
          from identifier in Span.EqualTo("checked")
             .Or(Span.EqualTo("only-child"))
             .Or(Span.EqualTo("empty"))
+             // This matching of common root string value to later select looks hack-ish
             .Or(Span.EqualTo("first-").Or(Span.EqualTo("last-"))
                 .Then(x => Span.EqualTo("of-type").Or(Span.EqualTo("child"))
                 .Select(s => new TextSpan(x.ToStringValue() + s.ToStringValue()))))
-             .Or(Span.EqualTo("not"))
-         from negation in NegationSelector.OptionalOrDefault()
+             // Perhaps we should switch to a tokenizer-based parsing for the pseudo classes?
+             .Or(Character.EqualTo('n')
+                .Then(x => Span.EqualTo("ot").Or(Span.EqualTo("th-of-type"))
+                .Select(s => new TextSpan("n" + s.ToStringValue()))))
+         from argument in PseudoArgumentSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
          {
              "checked" => CheckedSelector.Default,
@@ -105,8 +114,8 @@ class Parser
              "last-child" => LastChildSelector.Default,
              "first-of-type" => FirstOfTypeSelector.Default,
              "last-of-type" => LastOfTypeSelector.Default,
-             "not" when negation == null => throw new NotSupportedException(":not() must be followed by a simple selector"),
-             "not" => new NegationSelector(negation),
+             "not" => new NegationSelector(argument),
+             "nth-of-type" => argument,
              _ => throw new NotSupportedException()
          })
         .Named("checked pseudo selector");

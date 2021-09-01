@@ -35,6 +35,7 @@ At the moment, supports the following CSS selector features:
     * [:first-of-type](https://www.w3.org/TR/selectors-3/#first-of-type-pseudo)
     * [:last-of-type](https://www.w3.org/TR/selectors-3/#last-of-type-pseudo)
     * [:not(...)](https://www.w3.org/TR/selectors-3/#negation)
+    * [:nth-of-type(n)](https://www.w3.org/TR/selectors-3/#nth-of-type-pseudo)
 
 And all [combinators](https://www.w3.org/TR/selectors-3/#combinators)
 
