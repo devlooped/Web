@@ -1,6 +1,5 @@
 ﻿// Partially ported from https://github.com/css2xpath/css2xpath/blob/master/index.js 
-// See also https://ghostinspector.com/docs/css-xpath-conversion/#classes
-
+// See also https://ghostinspector.com/docs/css-xpath-conversion/#classes and http://plasmasturm.org/log/444/
 using System;
 using System.Collections.Generic;
 using System.Text;
