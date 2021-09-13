@@ -86,9 +86,9 @@ class Parser
         from selector in ClassSelector.Cast<SimpleSelector, BaseSelector>().Try()
                         .Or(IdSelector.Cast<SimpleSelector, BaseSelector>().Try())
                         .Or(AttributeSelector.Cast<SimpleSelector, BaseSelector>().Try())
-                        .Or(PseudoSelector.Cast<SimpleSelector, BaseSelector>().Try())
+                        .Or(PseudoSelector!.Cast<SimpleSelector, BaseSelector>().Try())
                         .Or(PositionSelector.Cast<SimpleSelector, BaseSelector>().Try())
-                        .Or(RelativeSelector.ManyDelimitedBy(Character.EqualTo(',')).Select(x => (BaseSelector)new CompositeSelector(x.OfType<BaseSelector>().ToArray())).Try())
+                        .Or(RelativeSelector!.ManyDelimitedBy(Character.EqualTo(',')).Select(x => (BaseSelector)new CompositeSelector(x.OfType<BaseSelector>().ToArray())).Try())
         from __ in Character.EqualTo(')')
         select selector;
 
