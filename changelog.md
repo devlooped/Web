@@ -1,5 +1,13 @@
 
 
+## [v0.3.0](https://github.com/devlooped/css/tree/v0.3.0) (2021-09-29)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.2.0...v0.3.0)
+
+:sparkles: Implemented enhancements:
+
+- Add text\(\) pseudo-attribute selector [\#15](https://github.com/devlooped/css/issues/15)
+
 ## [v0.2.0](https://github.com/devlooped/css/tree/v0.2.0) (2021-09-01)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v0.1.1...v0.2.0)
