@@ -26,6 +26,8 @@ class Parser
         from separator in Character.EqualTo('|')
         select identifier;
 
+    internal static TextParser<string> NodeText { get; } = Span.EqualTo("text()").Select(s => s.ToStringValue());
+
     internal static TextParser<SimpleSelector> UniversalSelector { get; } =
         (from ns in NamespacePrefix.Try().OptionalOrDefault()
          from star in Character.EqualTo('*')
@@ -66,7 +68,7 @@ class Parser
     internal static TextParser<SimpleSelector> AttributeSelector { get; } =
         (from start in Character.EqualTo('[')
          from _ in Character.WhiteSpace.IgnoreMany()
-         from identifier in Identifier
+         from identifier in NodeText.Try().Or(Identifier)
          from __ in Character.WhiteSpace.IgnoreMany()
          from matching in MatchingParser.Optional()
          from ___ in Character.WhiteSpace.IgnoreMany()

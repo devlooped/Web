@@ -62,6 +62,15 @@ record CombinedSelector(Combinator Combinator, CompositeSelector Selector) : Bas
 
 abstract record SimpleSelector : BaseSelector;
 
+record TextSelector : SimpleSelector
+{
+    public static SimpleSelector Default { get; } = new TextSelector();
+
+    TextSelector() { }
+
+    public override void Append(StringBuilder builder) => builder.Append("text()");
+}
+
 record TypeSelector(string Name, string? NamespacePrefix = default) : SimpleSelector
 {
     public override void Append(StringBuilder builder) => builder.Append(Name);
@@ -80,36 +89,41 @@ record AttributeSelector(string Name, string? Value = default, ValueMatching? Ma
     {
         builder.Append('[');
 
+        // Account for the text pseudo-attribute selector we provide.
+        var name = Name;
+        if (!name.Equals("text()", StringComparison.Ordinal))
+            name = "@" + name;
+
         if (Value == null)
         {
-            builder.Append('@').Append(Name);
+            builder.Append(name);
         }
         else if (Matching != null)
         {
             switch (Matching)
             {
                 case ValueMatching.Equals:
-                    builder.Append($"@{Name}=\"{Value}\"");
+                    builder.Append($"{name}=\"{Value}\"");
                     break;
                 case ValueMatching.Includes:
                     // [contains(concat(" ",normalize-space(@attr)," "),concat(" ","val"," "))]
-                    builder.Append($"contains(concat(\" \",normalize-space(@{Name}),\" \"),concat(\" \",\"{Value}\",\" \"))");
+                    builder.Append($"contains(concat(\" \",normalize-space({name}),\" \"),concat(\" \",\"{Value}\",\" \"))");
                     break;
                 case ValueMatching.Dash:
                     // [@attr="val" or starts-with(@attr,concat("val","-"))]'
-                    builder.Append($"@{Name}=\"{Value}\" or starts-with(@{Name},concat(\"{Value}\",\"-\"))");
+                    builder.Append($"@{Name}=\"{Value}\" or starts-with({name},concat(\"{Value}\",\"-\"))");
                     break;
                 case ValueMatching.Prefix:
                     // [starts-with(@attr,"value")]
-                    builder.Append($"starts-with(@{Name},\"{Value}\")");
+                    builder.Append($"starts-with({name},\"{Value}\")");
                     break;
                 case ValueMatching.Suffix:
                     // [substring(@attr,string-length(@attr)-(string-length("val")-1))="val"]
-                    builder.Append($"substring(@{Name},string-length(@{Name})-(string-length(\"{Value}\")-1))=\"{Value}\"");
+                    builder.Append($"substring({name},string-length({name})-(string-length(\"{Value}\")-1))=\"{Value}\"");
                     break;
                 case ValueMatching.Substring:
                     // [contains(@attr,"val")]
-                    builder.Append($"contains(@{Name},\"{Value}\")");
+                    builder.Append($"contains({name},\"{Value}\")");
                     break;
                 default:
                     throw new NotSupportedException();
@@ -117,7 +131,7 @@ record AttributeSelector(string Name, string? Value = default, ValueMatching? Ma
         }
         else
         {
-            throw new NotSupportedException();
+            throw new NotSupportedException($"Specified selector '{Name}' is not supported.");
         }
 
         builder.Append(']');

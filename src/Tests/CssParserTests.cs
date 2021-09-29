@@ -121,6 +121,26 @@ public record CssParserTests(ITestOutputHelper Console)
         Assert.Equal(matching, selector.Matching);
     }
 
+    [InlineData("[text()=ui]", "text()", "ui", ValueMatching.Equals)]
+    [InlineData("[text() = ui]", "text()", "ui", ValueMatching.Equals)]
+    [InlineData("[ text()= ui ]", "text()", "ui", ValueMatching.Equals)]
+    [InlineData("[text()~=ui]", "text()", "ui", ValueMatching.Includes)]
+    [InlineData("[text()|=ui]", "text()", "ui", ValueMatching.Dash)]
+    [InlineData("[text()^=ui]", "text()", "ui", ValueMatching.Prefix)]
+    [InlineData("[text()$=ui]", "text()", "ui", ValueMatching.Suffix)]
+    [InlineData("[text()*=ui]", "text()", "ui", ValueMatching.Substring)]
+    [InlineData("[text()]", "text()", null, null)]
+    [Theory]
+    internal void CanParseTextSelector(string expression, string attributeName, string? attributeValue, ValueMatching? matching)
+    {
+        var selector = (AttributeSelector)Parser.AttributeSelector.Parse(expression);
+
+        Assert.Equal(attributeName, selector.Name);
+        Assert.Equal(attributeValue, selector.Value);
+        Assert.Equal(matching, selector.Matching);
+    }
+
+
     [Fact]
     public void CanParseSelector1()
     {

@@ -40,6 +40,14 @@ At the moment, supports the following CSS selector features:
 
 And all [combinators](https://www.w3.org/TR/selectors-3/#combinators)
 
+Non-CSS features:
+
+- `text()` pseudo-attribute selector: selects the node text contents, as specified 
+  in the [XPath](https://www.w3.org/TR/1999/REC-xpath-19991116/) `text()` location 
+  path. Can be used instead of an attribute name selector, such as `div[text()=foo]`. 
+  All [attribute value selectors](https://www.w3.org/TR/selectors-3/#attribute-selectors) 
+  are also supported, such as `div[text()$=suffix]` or `div[text()*=yay]`
+
 
 # Dogfooding
 

@@ -54,6 +54,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div[role=menuitem]:nth-of-type(2)", "Archivo")]
     [InlineData("p:has(h1)", "Sub-header")]
     [InlineData("div:has(div[id], span[id=one])", "Hello1234")]
+    [InlineData("div[text()=Hello] + span:first-of-type", "1")]
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {
@@ -65,6 +66,18 @@ public record XPathTests(ITestOutputHelper Console)
             Console.WriteLine($"{expression} > {Parser.Parse(expression).ToXPath()}");
 
         Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void SelectEmptyDiv()
+    {
+        var expr = Parser.Parse("script[text()]");
+
+        var elements = XDocument.Load("page.html")
+            .CssSelectElements("script[text()]")
+            .ToArray();
+
+        Assert.DoesNotContain(elements, t => t.IsEmpty);
     }
 
     [Fact]
