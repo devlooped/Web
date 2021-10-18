@@ -4,7 +4,6 @@
 [![Version](https://img.shields.io/nuget/vpre/Devlooped.Xml.Css.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Xml.Css)
 [![Downloads](https://img.shields.io/nuget/dt/Devlooped.Xml.Css.svg?color=green)](https://www.nuget.org/packages/Devlooped.Xml.Css)
 [![License](https://img.shields.io/github/license/devlooped/css.svg?color=blue)](https://github.com/devlooped/css/blob/main/license.txt)
-[![Build](https://github.com/devlooped/css/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/css/actions)
 
 Implements CSS selectors for XLinq.
 
