@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="IsExternalInit" Version="1.0.1" PrivateAssets="all" />
-    <PackageReference Include="NuGetizer" Version="0.7.4" PrivateAssets="all" />
+    <PackageReference Include="NuGetizer" Version="0.7.5" PrivateAssets="all" />
     <PackageReference Include="Superpower" Version="3.0.0" />
   </ItemGroup>
 
