@@ -55,6 +55,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("p:has(h1)", "Sub-header")]
     [InlineData("div:has(div[id], span[id=one])", "Hello1234")]
     [InlineData("div[text()=Hello] + span:first-of-type", "1")]
+    [InlineData("option[selected=\"selected\"]", "second")]
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {

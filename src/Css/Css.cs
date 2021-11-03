@@ -100,30 +100,33 @@ record AttributeSelector(string Name, string? Value = default, ValueMatching? Ma
         }
         else if (Matching != null)
         {
+            // Remove quotes around the value since we always add them back for XPath.
+            var value = Value.Trim('"');
+
             switch (Matching)
             {
                 case ValueMatching.Equals:
-                    builder.Append($"{name}=\"{Value}\"");
+                    builder.Append($"{name}=\"{value}\"");
                     break;
                 case ValueMatching.Includes:
                     // [contains(concat(" ",normalize-space(@attr)," "),concat(" ","val"," "))]
-                    builder.Append($"contains(concat(\" \",normalize-space({name}),\" \"),concat(\" \",\"{Value}\",\" \"))");
+                    builder.Append($"contains(concat(\" \",normalize-space({name}),\" \"),concat(\" \",\"{value}\",\" \"))");
                     break;
                 case ValueMatching.Dash:
                     // [@attr="val" or starts-with(@attr,concat("val","-"))]'
-                    builder.Append($"@{Name}=\"{Value}\" or starts-with({name},concat(\"{Value}\",\"-\"))");
+                    builder.Append($"@{Name}=\"{value}\" or starts-with({name},concat(\"{value}\",\"-\"))");
                     break;
                 case ValueMatching.Prefix:
                     // [starts-with(@attr,"value")]
-                    builder.Append($"starts-with({name},\"{Value}\")");
+                    builder.Append($"starts-with({name},\"{value}\")");
                     break;
                 case ValueMatching.Suffix:
                     // [substring(@attr,string-length(@attr)-(string-length("val")-1))="val"]
-                    builder.Append($"substring({name},string-length({name})-(string-length(\"{Value}\")-1))=\"{Value}\"");
+                    builder.Append($"substring({name},string-length({name})-(string-length(\"{value}\")-1))=\"{value}\"");
                     break;
                 case ValueMatching.Substring:
                     // [contains(@attr,"val")]
-                    builder.Append($"contains({name},\"{Value}\")");
+                    builder.Append($"contains({name},\"{value}\")");
                     break;
                 default:
                     throw new NotSupportedException();
