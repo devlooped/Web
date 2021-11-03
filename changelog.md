@@ -1,4 +1,12 @@
+# Changelog
 
+## [v0.3.1](https://github.com/devlooped/css/tree/v0.3.1) (2021-11-03)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.3.0...v0.3.1)
+
+:bug: Fixed bugs:
+
+- If attribute value has quotes, XPath conversion fails [\#21](https://github.com/devlooped/css/issues/21)
 
 ## [v0.3.0](https://github.com/devlooped/css/tree/v0.3.0) (2021-09-29)
 
