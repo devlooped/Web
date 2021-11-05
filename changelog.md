@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.2](https://github.com/devlooped/css/tree/v0.3.2) (2021-11-05)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.3.1...v0.3.2)
+
+:bug: Fixed bugs:
+
+- If attribute value has quoted text with whitespace, fails to convert to XPath [\#22](https://github.com/devlooped/css/issues/22)
+
 ## [v0.3.1](https://github.com/devlooped/css/tree/v0.3.1) (2021-11-03)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v0.3.0...v0.3.1)
