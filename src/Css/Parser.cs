@@ -71,12 +71,11 @@ class Parser
          from identifier in NodeText.Try().Or(Identifier)
          from __ in Character.WhiteSpace.IgnoreMany()
          from matching in MatchingParser.Optional()
-         from ___ in Character.WhiteSpace.IgnoreMany()
-         from value in Character.Matching(c => c != ']' && !char.IsWhiteSpace(c), "attribute value").Many()
-         from ____ in Character.WhiteSpace.IgnoreMany()
+         from value in Span.WithoutAny(c => c == ']').Named("attribute value").Optional()
          from end in Character.EqualTo(']')
+         let attr = value?.ToStringValue().Trim()
          select (SimpleSelector)new AttributeSelector(identifier,
-             value.Length == 0 ? null : new string(value), matching))
+             attr?.Length == 0 ? null : attr, matching))
         .Named("attribute selector");
 
     internal static TextParser<SimpleSelector> PositionSelector { get; } =
