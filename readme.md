@@ -45,8 +45,19 @@ Non-CSS features:
   in the [XPath](https://www.w3.org/TR/1999/REC-xpath-19991116/) `text()` location 
   path. Can be used instead of an attribute name selector, such as `div[text()=foo]`. 
   All [attribute value selectors](https://www.w3.org/TR/selectors-3/#attribute-selectors) 
-  are also supported, such as `div[text()$=suffix]` or `div[text()*=yay]`
-
+  are also supported:
+    * `[text()=val]`: Represents an element whose text contents is exactly "val".
+    * `[text()~=val]`: Represents an element whose text contents is a whitespace-separated list of words, 
+       one of which is exactly "val". If "val" contains whitespace, it will never represent anything (since the words 
+       are separated by spaces). Also if "val" is the empty string, it will never represent anything.
+    * `[text()|=val]`: Represents an element whose text contents either being exactly "val" or 
+       beginning with "val" immediately followed by "-" (U+002D). 
+    * `[text()^=val]`: Represents an element whose text contents begins with the prefix "val". 
+       If "val" is the empty string then the selector does not represent anything.
+    * `[text()$=val]`: Represents an element whose text contents ends with the suffix "val". 
+       If "val" is the empty string then the selector does not represent anything.
+    * `[text()*=val]`: Represents an element whose text contents contains at least one instance of the 
+       substring "val". If "val" is the empty string then the selector does not represent anything.
 
 # Dogfooding
 
