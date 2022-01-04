@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Xml.Linq;
@@ -20,8 +21,11 @@ public static class CssSelectorExtensions
     /// <param name="node">The <see cref="XNode"/> on which to evaluate the XPath expression.</param>
     /// <param name="expression">A <see cref="string"/> that contains a CSS3 selector expression.</param>
     /// <returns>An <see cref="XElement"/>, or null.</returns>
-    public static XElement CssSelectElement(this XNode node, string expression)
+    public static XElement? CssSelectElement(this XNode? node, string expression)
     {
+        if (node == null)
+            return null;
+
         var selector = Parser.Parse(expression);
         var xpath = selector.ToXPath();
         return node.XPathSelectElement(xpath);
@@ -35,8 +39,11 @@ public static class CssSelectorExtensions
     /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="XElement"/> that
     /// contains the selected elements.
     /// </returns>
-    public static IEnumerable<XElement> CssSelectElements(this XNode node, string expression)
+    public static IEnumerable<XElement> CssSelectElements(this XNode? node, string expression)
     {
+        if (node == null)
+            return Array.Empty<XElement>();
+
         var selector = Parser.Parse(expression);
         var xpath = selector.ToXPath();
         return node.XPathSelectElements(xpath, new CssContext());
