@@ -1,5 +1,15 @@
 # Changelog
 
+## [v1.0.0](https://github.com/devlooped/css/tree/v1.0.0) (2022-01-04)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v0.3.2...v1.0.0)
+
+:sparkles: Implemented enhancements:
+
+- Document all supported selectors for `text()` in readme [\#28](https://github.com/devlooped/css/issues/28)
+- Add nullable annotations to public surface API [\#26](https://github.com/devlooped/css/issues/26)
+- Add nullable annotations to public surface API [\#27](https://github.com/devlooped/css/pull/27) (@kzu)
+
 ## [v0.3.2](https://github.com/devlooped/css/tree/v0.3.2) (2021-11-05)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v0.3.1...v0.3.2)
