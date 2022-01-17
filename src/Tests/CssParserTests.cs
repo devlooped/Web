@@ -140,7 +140,6 @@ public record CssParserTests(ITestOutputHelper Console)
         Assert.Equal(matching, selector.Matching);
     }
 
-
     [Fact]
     public void CanParseSelector1()
     {
