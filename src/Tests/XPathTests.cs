@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using Superpower;
 
@@ -89,5 +90,34 @@ public record XPathTests(ITestOutputHelper Console)
         var div = Parser.SimpleSelectorSequence.Parse("div[title]");
 
         Assert.NotNull(div);
+    }
+
+    [InlineData("[text()=hello world]", "[text()=\"hello world\"]")]
+    [InlineData("[text()='hello world']", "[text()=\"hello world\"]")]
+    [InlineData("[text()=\"hello world\"]", "[text()=\"hello world\"]")]
+    [InlineData("[text()*=\"hello world\"]", "[contains(text(),\"hello world\")]")]
+    [InlineData("[text()*='hello world']", "[contains(text(),\"hello world\")]")]
+    [InlineData("[data='hello world']", "[@data=\"hello world\"]")]
+    [InlineData("[data=hello world]", "[@data=\"hello world\"]")]
+    [InlineData("[data=\"hello world\"]", "[@data=\"hello world\"]")]
+    [InlineData("[data*=\"hello world\"]", "[contains(@data,\"hello world\")]")]
+    [InlineData("[data*='hello world']", "[contains(@data,\"hello world\")]")]
+    [Theory]
+    internal void AttributeSelectorNormalizesQuotes(string expression, string xpath)
+    {
+        var selector = (AttributeSelector)Parser.AttributeSelector.Parse(expression);
+
+        var builder = new StringBuilder();
+        selector.Append(builder);
+
+        Assert.Equal(xpath, builder.ToString());
+    }
+
+
+    [Fact]
+    public void RenderExpression()
+    {
+        var expression = "*[text()$=\"to go\"]";
+        Console.WriteLine(Parser.Parse(expression).ToXPath());
     }
 }

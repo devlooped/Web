@@ -101,7 +101,7 @@ record AttributeSelector(string Name, string? Value = default, ValueMatching? Ma
         else if (Matching != null)
         {
             // Remove quotes around the value since we always add them back for XPath.
-            var value = Value.Trim('"');
+            var value = Value.Trim('"', '\'');
 
             switch (Matching)
             {
