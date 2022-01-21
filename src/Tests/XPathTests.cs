@@ -65,6 +65,8 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("span:not([text()='4']),div[role]", "Warning 1 2 5 Standard File Archivo Edit Footer")]
     [InlineData(".item__hiden-content", "Archivo")]
     [InlineData("body > div > span", "1 2 4")]
+    [InlineData("body > div:nth-of-type(3)", "Standard")]
+    [InlineData("body > span:nth-child(5)", "5")]
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {

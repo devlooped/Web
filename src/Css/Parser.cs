@@ -104,6 +104,7 @@ class Parser
             .Or(Span.EqualTo("last-of-type").Try())
             .Or(Span.EqualTo("not").Try())
             .Or(Span.EqualTo("nth-of-type").Try())
+            .Or(Span.EqualTo("nth-child").Try())
             .Or(Span.EqualTo("has"))
          from argument in PseudoArgumentSelector.OptionalOrDefault()
          select identifier.ToStringValue() switch
@@ -118,6 +119,7 @@ class Parser
              "not" => new NegationSelector(argument),
              "nth-of-type" => (SimpleSelector)argument,
              "has" => new HasSelector(argument),
+             string id when id == "nth-child" && argument is PositionSelector position => new NthChildSelector(position.Position),
              _ => throw new NotSupportedException()
          })
         .Named("pseudo selector");
