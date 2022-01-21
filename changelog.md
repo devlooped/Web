@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.1.0](https://github.com/devlooped/css/tree/v1.1.0) (2022-01-21)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v1.0.0...v1.1.0)
+
+:sparkles: Implemented enhancements:
+
+- Attribute value matching does not normalize single quote values [\#30](https://github.com/devlooped/css/issues/30)
+
+:twisted_rightwards_arrows: Merged:
+
+- Add support for selector groups [\#33](https://github.com/devlooped/css/pull/33) (@kzu)
+- Apply single quotes normalization to attribute value matching [\#31](https://github.com/devlooped/css/pull/31) (@kzu)
+
 ## [v1.0.0](https://github.com/devlooped/css/tree/v1.0.0) (2022-01-04)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v0.3.2...v1.0.0)
