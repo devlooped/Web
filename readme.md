@@ -35,7 +35,7 @@ At the moment, supports the following CSS selector features:
     * [:last-of-type](https://www.w3.org/TR/selectors-3/#last-of-type-pseudo)
     * [:not(...)](https://www.w3.org/TR/selectors-3/#negation)
     * [:nth-of-type(n)](https://www.w3.org/TR/selectors-3/#nth-of-type-pseudo)
-    * [:nth-child(n)](https://www.w3.org/TR/selectors-3/#nth-child-pseudo): simplified syntax with just a position only
+    * [:nth-child(n)](https://www.w3.org/TR/selectors-3/#nth-child-pseudo)
     * [:has(...)](https://www.w3.org/TR/selectors-4/#has-pseudo)
 
 And all [combinators](https://www.w3.org/TR/selectors-3/#combinators)
