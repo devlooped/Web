@@ -1,5 +1,21 @@
 # Changelog
 
+## [v1.1.1](https://github.com/devlooped/css/tree/v1.1.1) (2022-01-21)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v1.1.0...v1.1.1)
+
+:bug: Fixed bugs:
+
+- If CSS identifier contains underscore, wrong XPath is built [\#34](https://github.com/devlooped/css/issues/34)
+
+:hammer: Other:
+
+- Add support for selector groups [\#32](https://github.com/devlooped/css/issues/32)
+
+:twisted_rightwards_arrows: Merged:
+
+- Properly parse underscore in CSS identifiers [\#35](https://github.com/devlooped/css/pull/35) (@kzu)
+
 ## [v1.1.0](https://github.com/devlooped/css/tree/v1.1.0) (2022-01-21)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v1.0.0...v1.1.0)
