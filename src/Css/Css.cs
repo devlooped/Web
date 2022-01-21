@@ -63,7 +63,7 @@ record CombinedSelector(Combinator Combinator, CompositeSelector Selector) : Bas
     {
         Combinator.None => ".//",
         Combinator.Descendant => "//",
-        Combinator.Child => "/child::*[1]/self::",
+        Combinator.Child => "/",
         Combinator.NextSibling => "/following-sibling::*[1]/self::",
         Combinator.SubsequentSibling => "/following-sibling::",
         _ => throw new NotSupportedException(),

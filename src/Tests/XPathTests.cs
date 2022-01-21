@@ -9,7 +9,9 @@ public record XPathTests(ITestOutputHelper Console)
 {
     [InlineData("foo", ".//foo")]
     [InlineData(".foo", ".//*[contains(concat(\" \",normalize-space(@class),\" \"),\" foo \")]")]
-    [InlineData("foo > bar", ".//foo/child::*[1]/self::bar")]
+    [InlineData("foo > bar", ".//foo/bar")]
+    [InlineData("foo > bar > baz", ".//foo/bar/baz")]
+    [InlineData("foo ~ bar", ".//foo/following-sibling::bar")]
     // .//*[@data-tags="flow" or starts-with(@data-tags,concat("flow","-"))]
     [InlineData("[data-tags|=flow]", ".//*[@data-tags=\"flow\" or starts-with(@data-tags,concat(\"flow\",\"-\"))]")]
     [InlineData("[role*=nu]", ".//*[contains(@role,\"nu\")]")]
@@ -62,7 +64,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div[role],span", "Warning 1 2 4 5 Standard File Archivo Edit Footer")]
     [InlineData("span:not([text()='4']),div[role]", "Warning 1 2 5 Standard File Archivo Edit Footer")]
     [InlineData(".item__hiden-content", "Archivo")]
-    //item__hiden-content
+    [InlineData("body > div > span", "1 2 4")]
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {
