@@ -14,9 +14,10 @@ class Parser
 
     // NOTE: we don't perform any validation on identifiers, it's 
     // up to consumers to ensure they provide valid ones. 
+    // See https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
     internal static TextParser<string> Identifier { get; } =
-        from start in Character.EqualTo('-').Or(Escape).Or(Character.Letter)
-        from rest in Character.EqualTo('-').Or(Escape).Or(Character.LetterOrDigit)
+        from start in Character.EqualTo('-').Or(Character.EqualTo('_')).Or(Escape).Or(Character.Letter)
+        from rest in Character.EqualTo('-').Or(Character.EqualTo('_')).Or(Escape).Or(Character.LetterOrDigit)
                      .Many()
         select start + new string(rest);
 
