@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.1.2](https://github.com/devlooped/css/tree/v1.1.2) (2022-01-21)
+
+[Full Changelog](https://github.com/devlooped/css/compare/v1.1.1...v1.1.2)
+
+:bug: Fixed bugs:
+
+- Child combinator selects only first child [\#36](https://github.com/devlooped/css/issues/36)
+
+:twisted_rightwards_arrows: Merged:
+
+- Fix child combinator to XPath conversion [\#37](https://github.com/devlooped/css/pull/37) (@kzu)
+
 ## [v1.1.1](https://github.com/devlooped/css/tree/v1.1.1) (2022-01-21)
 
 [Full Changelog](https://github.com/devlooped/css/compare/v1.1.0...v1.1.1)
