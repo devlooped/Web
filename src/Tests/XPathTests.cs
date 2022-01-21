@@ -59,6 +59,7 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("option[selected=\"selected\"]", "second")]
     [InlineData("div[tags^=\"selected flow\"]+div", "Archivo")]
     [InlineData("div[tags^=\"selected flow\"] + div", "Archivo")]
+    [InlineData("div[role],span", "Warning 1 2 4 5 Standard File Archivo Edit Footer")]
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {

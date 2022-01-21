@@ -175,8 +175,10 @@ class Parser
             start.Sequence.Length == 0 ? new[] { Css.UniversalSelector.Default } : start.Sequence,
             steps.Where(x => x != null));
 
-    public static Selector Parse(string expression) =>
+    internal static TextParser<Selector[]> SelectorGroup { get; } = Selector.ManyDelimitedBy(Character.In(','));
+
+    public static SelectorGroup Parse(string expression) =>
         string.IsNullOrEmpty(expression) ?
-        throw new ArgumentException("Empty selector", nameof(expression)) :
-        Selector.Parse(expression);
+        throw new ArgumentException("Empty expression", nameof(expression)) :
+        new SelectorGroup(SelectorGroup.Parse(expression));
 }

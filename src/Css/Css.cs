@@ -2,9 +2,19 @@
 // See also https://ghostinspector.com/docs/css-xpath-conversion/#classes and http://plasmasturm.org/log/444/
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Devlooped.Xml.Css;
+
+class SelectorGroup : List<Selector>
+{
+    public SelectorGroup() { }
+
+    public SelectorGroup(IEnumerable<Selector> selectors) : base(selectors) { }
+
+    public string ToXPath() => string.Join(" | ", this.Select(s => s.ToXPath()));
+}
 
 class Selector : List<CombinedSelector>
 {
