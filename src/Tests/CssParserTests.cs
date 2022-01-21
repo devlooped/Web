@@ -164,10 +164,15 @@ public record CssParserTests(ITestOutputHelper Console)
     [Fact]
     public void CanParseSelector2()
     {
-        var selector = Parser.Selector.Parse("foo > bar");
+        var selector = Parser.Selector.Parse("foo:nth-child(2)");
+        var xpath = selector.ToXPath();
     }
 
     [InlineData("foo\\+bar", "foo+bar")]
+    [InlineData("foo_bar", "foo_bar")]
+    [InlineData("foo__bar", "foo__bar")]
+    [InlineData("_foo-bar", "_foo-bar")]
+    [InlineData("-foo_bar", "-foo_bar")]
     [Theory]
     public void ParseIdentifier(string expression, string identifier)
         => Assert.Equal(identifier, Parser.Identifier.Parse(expression));

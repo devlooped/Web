@@ -301,6 +301,12 @@ record PositionSelector(string Position) : SimpleSelector
         => builder.Append("[").Append(Position).Append("]");
 }
 
+record NthChildSelector(string Position) : SimpleSelector
+{
+    public override void Append(StringBuilder builder)
+        => builder.Append("[(count(preceding-sibling::*)+1)=").Append(Position).Append("]");
+}
+
 enum Combinator
 {
     None,
