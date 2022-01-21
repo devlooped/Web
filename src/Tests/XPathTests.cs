@@ -61,6 +61,8 @@ public record XPathTests(ITestOutputHelper Console)
     [InlineData("div[tags^=\"selected flow\"] + div", "Archivo")]
     [InlineData("div[role],span", "Warning 1 2 4 5 Standard File Archivo Edit Footer")]
     [InlineData("span:not([text()='4']),div[role]", "Warning 1 2 5 Standard File Archivo Edit Footer")]
+    [InlineData(".item__hiden-content", "Archivo")]
+    //item__hiden-content
     [Theory]
     public void EvaluatePageHtml(string expression, string expected)
     {
