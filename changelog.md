@@ -2,22 +2,15 @@
 
 ## [v1.1.2](https://github.com/devlooped/css/tree/v1.1.2) (2022-01-21)
 
-[Full Changelog](https://github.com/devlooped/css/compare/v1.1.1...v1.1.2)
+[Full Changelog](https://github.com/devlooped/css/compare/v1.0.0...v1.1.2)
+
+:sparkles: Implemented enhancements:
+
+- Attribute value matching does not normalize single quote values [\#30](https://github.com/devlooped/css/issues/30)
 
 :bug: Fixed bugs:
 
 - Child combinator selects only first child [\#36](https://github.com/devlooped/css/issues/36)
-
-:twisted_rightwards_arrows: Merged:
-
-- Fix child combinator to XPath conversion [\#37](https://github.com/devlooped/css/pull/37) (@kzu)
-
-## [v1.1.1](https://github.com/devlooped/css/tree/v1.1.1) (2022-01-21)
-
-[Full Changelog](https://github.com/devlooped/css/compare/v1.1.0...v1.1.1)
-
-:bug: Fixed bugs:
-
 - If CSS identifier contains underscore, wrong XPath is built [\#34](https://github.com/devlooped/css/issues/34)
 
 :hammer: Other:
@@ -26,18 +19,8 @@
 
 :twisted_rightwards_arrows: Merged:
 
+- Fix child combinator to XPath conversion [\#37](https://github.com/devlooped/css/pull/37) (@kzu)
 - Properly parse underscore in CSS identifiers [\#35](https://github.com/devlooped/css/pull/35) (@kzu)
-
-## [v1.1.0](https://github.com/devlooped/css/tree/v1.1.0) (2022-01-21)
-
-[Full Changelog](https://github.com/devlooped/css/compare/v1.0.0...v1.1.0)
-
-:sparkles: Implemented enhancements:
-
-- Attribute value matching does not normalize single quote values [\#30](https://github.com/devlooped/css/issues/30)
-
-:twisted_rightwards_arrows: Merged:
-
 - Add support for selector groups [\#33](https://github.com/devlooped/css/pull/33) (@kzu)
 - Apply single quotes normalization to attribute value matching [\#31](https://github.com/devlooped/css/pull/31) (@kzu)
 
