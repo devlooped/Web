@@ -12,6 +12,23 @@ namespace Devlooped.Html;
 /// </summary>
 public static class HtmlDocument
 {
+    const string DefaultPublicIdentifier = "-//W3C//DTD XHTML 1.0 Transitional//EN";
+    const string DefaultSystemLiteral = "http://www.w3.org/TR/html4/loose.dtd";
+
+    /// <summary>
+    /// Create a new <see cref="XDocument"/> and initialize its underlying XML tree using
+    /// the passed <see cref="Stream"/> parameter.
+    /// </summary>
+    /// <param name="stream">
+    /// A <see cref="Stream"/> containing the raw HTML to read into the newly
+    /// created <see cref="XDocument"/>.
+    /// </param>
+    /// <returns>
+    /// A new <see cref="XDocument"/> containing the contents of the passed in
+    /// <see cref="Stream"/>.
+    /// </returns>
+    public static XDocument Load(Stream stream) => Load(stream, HtmlReaderSettings.Default);
+
     /// <overloads>
     /// The Load method provides multiple strategies for creating a new
     /// <see cref="XDocument"/> and initializing it from a data source containing
@@ -35,11 +52,22 @@ public static class HtmlDocument
     /// An <see cref="XDocument"/> initialized with the contents of the file referenced
     /// in the passed in uri parameter.
     /// </returns>
-    public static XDocument Load(string uri)
-    {
-        using var stream = (Stream)new XmlUrlResolver().GetEntity(new Uri(uri), string.Empty, typeof(Stream));
-        return Load(stream);
-    }
+    public static XDocument Load(string uri) => Load(uri, HtmlReaderSettings.Default);
+
+    /// <summary>
+    /// Create a new <see cref="XDocument"/> and initialize its underlying XML tree using
+    /// the passed <see cref="TextReader"/> parameter.  Optionally whitespace handling
+    /// can be preserved.
+    /// </summary>
+    /// <param name="textReader">
+    /// A <see cref="TextReader"/> containing the raw HTML to read into the newly
+    /// created <see cref="XDocument"/>.
+    /// </param>
+    /// <returns>
+    /// A new <see cref="XDocument"/> containing the contents of the passed in
+    /// <see cref="TextReader"/>.
+    /// </returns>
+    public static XDocument Load(TextReader textReader) => Load(textReader, HtmlReaderSettings.Default);
 
     /// <summary>
     /// Create a new <see cref="XDocument"/> and initialize its underlying XML tree using
@@ -49,12 +77,13 @@ public static class HtmlDocument
     /// A <see cref="Stream"/> containing the raw HTML to read into the newly
     /// created <see cref="XDocument"/>.
     /// </param>
+    /// <param name="settings">The settings for the HTML load process.</param>
     /// <returns>
     /// A new <see cref="XDocument"/> containing the contents of the passed in
     /// <see cref="Stream"/>.
     /// </returns>
-    public static XDocument Load(Stream stream)
-        => Load(new StreamReader(stream));
+    public static XDocument Load(Stream stream, HtmlReaderSettings settings)
+        => Load(new StreamReader(stream), settings);
 
     /// <overloads>
     /// The Load method provides multiple strategies for creating a new
@@ -82,47 +111,12 @@ public static class HtmlDocument
     /// </returns>
     public static XDocument Load(string uri, HtmlReaderSettings settings)
     {
-        using var stream = (Stream)new XmlUrlResolver().GetEntity(new Uri(uri), string.Empty, typeof(Stream));
-        return Load(stream, settings);
-    }
-
-    /// <summary>
-    /// Create a new <see cref="XDocument"/> and initialize its underlying XML tree using
-    /// the passed <see cref="Stream"/> parameter.
-    /// </summary>
-    /// <param name="stream">
-    /// A <see cref="Stream"/> containing the raw HTML to read into the newly
-    /// created <see cref="XDocument"/>.
-    /// </param>
-    /// <param name="settings">The settings for the HTML load process.</param>
-    /// <returns>
-    /// A new <see cref="XDocument"/> containing the contents of the passed in
-    /// <see cref="Stream"/>.
-    /// </returns>
-    public static XDocument Load(Stream stream, HtmlReaderSettings settings)
-        => Load(new StreamReader(stream), settings);
-
-    /// <summary>
-    /// Create a new <see cref="XDocument"/> and initialize its underlying XML tree using
-    /// the passed <see cref="TextReader"/> parameter.  Optionally whitespace handling
-    /// can be preserved.
-    /// </summary>
-    /// <param name="textReader">
-    /// A <see cref="TextReader"/> containing the raw HTML to read into the newly
-    /// created <see cref="XDocument"/>.
-    /// </param>
-    /// <returns>
-    /// A new <see cref="XDocument"/> containing the contents of the passed in
-    /// <see cref="TextReader"/>.
-    /// </returns>
-    public static XDocument Load(TextReader textReader)
-    {
         using var reader = new SgmlReader
         {
-            InputStream = textReader,
+            Href = uri,
         };
 
-        return XDocument.Load(new IgnoreXmlNsReader(reader));
+        return XDocument.Load(Configure(reader, settings));
     }
 
     /// <summary>
@@ -144,12 +138,9 @@ public static class HtmlDocument
         using var reader = new SgmlReader
         {
             InputStream = textReader,
-            CaseFolding = settings.CaseFolding,
-            WhitespaceHandling = settings.WhitespaceHandling,
-            TextWhitespace = settings.TextWhitespace,
         };
 
-        return XDocument.Load(settings.IgnoreXmlNamespaces ? new IgnoreXmlNsReader(reader) : reader);
+        return XDocument.Load(Configure(reader, settings));
     }
 
     /// <overloads>
@@ -165,8 +156,7 @@ public static class HtmlDocument
     /// An <see cref="XDocument"/> containing an XML tree initialized from the
     /// passed in HTML string.
     /// </returns>
-    public static XDocument Parse(string html)
-        => Load(new StringReader(html));
+    public static XDocument Parse(string html) => Parse(html, HtmlReaderSettings.Default);
 
     /// <overloads>
     /// Create a new <see cref="XDocument"/> from a string containing
@@ -186,6 +176,27 @@ public static class HtmlDocument
     /// </returns>
     public static XDocument Parse(string html, HtmlReaderSettings settings)
         => Load(new StringReader(html), settings);
+
+    static XmlReader Configure(SgmlReader reader, HtmlReaderSettings settings)
+    {
+        reader.DocType = "html";
+        reader.PublicIdentifier = DefaultPublicIdentifier;
+        reader.SystemLiteral = DefaultSystemLiteral;
+
+        reader.CaseFolding = settings.CaseFolding;
+        reader.WhitespaceHandling = settings.WhitespaceHandling;
+        reader.TextWhitespace = settings.TextWhitespace;
+
+        XmlReader result = reader;
+
+        if (settings.IgnoreXmlNamespaces)
+            result = new IgnoreXmlNsReader(result);
+
+        if (settings.SkipElements.Length > 0)
+            result = new SkipElementsReader(result, settings.SkipElements);
+
+        return result;
+    }
 
     /// <summary>
     /// Removes all XML namespaces, since for HTML content it's typically 
@@ -241,6 +252,29 @@ public static class HtmlDocument
         bool IsXmlNs => base.NamespaceURI == XmlNsNamespace;
 
         bool IsLocalXmlNs => Prefix == "xmlns";
+    }
+
+    /// <summary>
+    /// Removes all XML namespaces, since for HTML content it's typically 
+    /// irrelevant.
+    /// </summary>
+    class SkipElementsReader : XmlWrappingReader
+    {
+        readonly HashSet<string> skipElements;
+
+        public SkipElementsReader(XmlReader baseReader, string[] skipElements) : base(baseReader)
+        {
+            this.skipElements = new HashSet<string>(skipElements, StringComparer.OrdinalIgnoreCase);
+        }
+
+        public override bool Read()
+        {
+            var read = base.Read();
+            if (read && base.NodeType == XmlNodeType.Element && skipElements.Contains(LocalName))
+                base.Skip();
+
+            return read;
+        }
     }
 }
 

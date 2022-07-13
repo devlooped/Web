@@ -10,8 +10,8 @@ Implements CSS selectors for XLinq.
 # Usage
 
 ```csharp
-using Devlooped.Web;
 using System.Xml.Linq;
+using Devlooped.Web;
 
 XDocument page = HtmlDocument.Load("page.html")
 IEnumerable<XElement> elements = page.CssSelectElements("div.menuitem");
