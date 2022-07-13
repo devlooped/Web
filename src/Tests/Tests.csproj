@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>Devlooped.Tests</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Devlooped</RootNamespace>
-    <NoWarn>xUnit1013</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,23 +26,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Css\Css.csproj" />
+    <ProjectReference Include="..\Html\Html.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="page.html" Generator="MSBuild:ForceCompile" CopyToOutputDirectory="PreserveNewest"/>
-    <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="@(None)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <CoreCompileDependsOn>ForceCompile;$(CoreCompileDependsOn)</CoreCompileDependsOn>
-  </PropertyGroup>
-  
-  <Target Name="ForceCompile" BeforeTargets="CoreCompile"
-          Inputs="page.html" Outputs="$(BaseIntermediateOutputPath)page.g.cs">
-    <WriteLinesToFile File="$(BaseIntermediateOutputPath)page.g.cs" Lines="" />
-    <ItemGroup>
-      <Compile Include="$(BaseIntermediateOutputPath)page.g.cs" />
-    </ItemGroup>
-  </Target>
 
 </Project>

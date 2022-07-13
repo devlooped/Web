@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "src\Tests\Tests.csproj", "{EB34C69E-A400-4E5D-96C2-92567A30A638}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C9B8F71-B2DC-4BBD-9E70-C1A2F515DEC6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html", "src\Html\Html.csproj", "{3583E5CF-55BE-432D-884A-902824A86B4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB34C69E-A400-4E5D-96C2-92567A30A638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB34C69E-A400-4E5D-96C2-92567A30A638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB34C69E-A400-4E5D-96C2-92567A30A638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB34C69E-A400-4E5D-96C2-92567A30A638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3583E5CF-55BE-432D-884A-902824A86B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3583E5CF-55BE-432D-884A-902824A86B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3583E5CF-55BE-432D-884A-902824A86B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3583E5CF-55BE-432D-884A-902824A86B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9DC8D34-94A9-431C-98DE-822E7F954E97}
+	EndGlobalSection
+EndGlobal
