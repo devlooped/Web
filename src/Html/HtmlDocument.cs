@@ -1,11 +1,16 @@
-﻿using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 using Sgml;
+
+namespace Devlooped.Html;
 
 /// <summary>
 /// Allows loading an HTML document as an <see cref="XDocument"/>.
 /// </summary>
-partial class HtmlDocument
+public static class HtmlDocument
 {
     /// <overloads>
     /// The Load method provides multiple strategies for creating a new

@@ -1,6 +1,7 @@
 using System.Xml.XPath;
+using Devlooped.Html;
 
-namespace Tests;
+namespace Devlooped.Tests;
 
 public record HtmlTests(ITestOutputHelper Output)
 {
