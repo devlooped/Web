@@ -149,7 +149,7 @@ public static class HtmlDocument
             TextWhitespace = settings.TextWhitespace,
         };
 
-        return XDocument.Load(new IgnoreXmlNsReader(reader));
+        return XDocument.Load(settings.IgnoreXmlNamespaces ? new IgnoreXmlNsReader(reader) : reader);
     }
 
     /// <overloads>

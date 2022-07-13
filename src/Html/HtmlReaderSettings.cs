@@ -18,6 +18,11 @@ public sealed class HtmlReaderSettings
     public CaseFolding CaseFolding { get; set; }
 
     /// <summary>
+    /// Whether to ignore XML namespaces in the input. Default is true.
+    /// </summary>
+    public bool IgnoreXmlNamespaces { get; set; } = true;
+
+    /// <summary>
     /// Specifies how leading and trailing whitespace is handled.
     /// Note that this is a <see cref="FlagsAttribute"/>-enum.
     /// </summary>
