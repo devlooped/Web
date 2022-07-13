@@ -6,18 +6,46 @@ namespace Devlooped.Tests;
 public record HtmlTests(ITestOutputHelper Output)
 {
     [Fact]
-    public void SkipsAllScripts()
+    public void IncludesScripts()
     {
         var doc = HtmlDocument.Load(new Uri("file://" + new FileInfo("wikipedia.html").FullName).AbsoluteUri);
 
-        Assert.Empty(doc.XPathSelectElements("//script"));
+        Assert.NotEmpty(doc.XPathSelectElements("//script"));
     }
 
     [Fact]
-    public void SkipsAllStylesAsync()
+    public void IncludesStyles()
     {
         var doc = HtmlDocument.Load(new Uri("file://" + new FileInfo("wikipedia.html").FullName).AbsoluteUri);
 
-        Assert.Empty(doc.XPathSelectElements("//stype"));
+        Assert.NotEmpty(doc.XPathSelectElements("//style"));
+    }
+
+    [Fact]
+    public void RemovesXmlNamespaces()
+    {
+        var doc = HtmlDocument.Load(new Uri("file://" + new FileInfo("sample.xhtml").FullName).AbsoluteUri);
+
+        Assert.NotEmpty(doc.XPathSelectElements("//h1"));
+    }
+
+    [Fact]
+    public void HtmlSettings()
+    {
+        var doc = HtmlDocument.Load(new Uri("file://" + new FileInfo("wikipedia.html").FullName).AbsoluteUri,
+            new HtmlReaderSettings
+            {
+                CaseFolding = Sgml.CaseFolding.ToUpper,
+                TextWhitespace = Sgml.TextWhitespaceHandling.TrimBoth,
+                WhitespaceHandling = System.Xml.WhitespaceHandling.None
+            });
+
+        // The source has lowercase elements
+        var central = doc.XPathSelectElement("/HTML/BODY/DIV/H1/SPAN");
+
+        Assert.NotNull(central);
+
+        // The source contains leading and trailing whitespaces.
+        Assert.Equal("Wikipedia", central!.Value);
     }
 }

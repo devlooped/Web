@@ -122,7 +122,7 @@ public static class HtmlDocument
             InputStream = textReader,
         };
 
-        return XDocument.Load(new XhtmlContentReader(reader));
+        return XDocument.Load(new IgnoreXmlNsReader(reader));
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public static class HtmlDocument
             TextWhitespace = settings.TextWhitespace,
         };
 
-        return XDocument.Load(new XhtmlContentReader(reader));
+        return XDocument.Load(new IgnoreXmlNsReader(reader));
     }
 
     /// <overloads>
@@ -188,28 +188,14 @@ public static class HtmlDocument
         => Load(new StringReader(html), settings);
 
     /// <summary>
-    /// Skips known non-content elements such as scripts and styles. 
-    /// It also removes all XML namespaces, since for HTML content it's typically 
+    /// Removes all XML namespaces, since for HTML content it's typically 
     /// irrelevant.
     /// </summary>
-    class XhtmlContentReader : XmlWrappingReader
+    class IgnoreXmlNsReader : XmlWrappingReader
     {
         const string XmlNsNamespace = "http://www.w3.org/2000/xmlns/";
 
-        /// <summary>
-        /// Skips elements that typically aren't processed as content: 
-        /// script, noscript, style and iframe.
-        /// </summary>
-        public static HashSet<string> DefaultSkipElements { get; } = new()
-        {
-            "script",
-            "noscript",
-            "style"
-        };
-
-        public XhtmlContentReader(XmlReader baseReader) : base(baseReader) { }
-
-        public HashSet<string> SkipElements { get; } = DefaultSkipElements;
+        public IgnoreXmlNsReader(XmlReader baseReader) : base(baseReader) { }
 
         public override int AttributeCount
         {
@@ -242,15 +228,6 @@ public static class HtmlDocument
                 moved = MoveToNextAttribute();
 
             return moved;
-        }
-
-        public override bool Read()
-        {
-            var read = base.Read();
-            if (read && base.NodeType == XmlNodeType.Element && SkipElements.Contains(LocalName))
-                base.Skip();
-
-            return read;
         }
 
         /// <summary>
