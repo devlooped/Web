@@ -3,7 +3,7 @@ using System.Linq;
 using Superpower;
 using Superpower.Parsers;
 
-namespace Devlooped.Xml.Css;
+namespace Devlooped.Web;
 
 class Parser
 {
@@ -133,7 +133,7 @@ class Parser
                     .Many()
         select (start == null && rest.Length == 0) ?
             CompositeSelector.Empty :
-            new[] { start ?? Css.UniversalSelector.Default }.Concat(rest).ToArray();
+            new[] { start ?? Web.UniversalSelector.Default }.Concat(rest).ToArray();
 
     internal static TextParser<Combinator?> CombinatorParser { get; } =
         from combinator in Character.In('>', '+', '~').Or(Character.WhiteSpace).Optional().Named("combinator")
@@ -175,7 +175,7 @@ class Parser
         from _ in Character.WhiteSpace.IgnoreMany()
         from steps in SelectorStep.ManyDelimitedBy(Span.WhiteSpace)
         select new Selector(
-            start.Sequence.Length == 0 ? new[] { Css.UniversalSelector.Default } : start.Sequence,
+            start.Sequence.Length == 0 ? new[] { Web.UniversalSelector.Default } : start.Sequence,
             steps.Where(x => x != null));
 
     internal static TextParser<Selector[]> SelectorGroup { get; } = Selector.ManyDelimitedBy(Character.In(','));

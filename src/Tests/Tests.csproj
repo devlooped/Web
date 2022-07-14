@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>Devlooped.Tests</AssemblyName>
-    <RootNamespace>Devlooped</RootNamespace>
-    <NoWarn>xUnit1013</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,33 +16,15 @@
   <ItemGroup>
     <Using Include="Xunit" />
     <Using Include="Xunit.Abstractions" />
-    <Using Include="Devlooped.Xml.Css" />
-    <Import Include="@(Using)" />
-    <!--
-    <AdditionalFiles Include="page.html" SourceItemType="Html" />
-    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="SourceItemType" />
-    -->
+    <Using Include="Devlooped.Web" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Css\Css.csproj" />
+    <ProjectReference Include="..\Web\Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="page.html" Generator="MSBuild:ForceCompile" CopyToOutputDirectory="PreserveNewest"/>
-    <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="@(None)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <CoreCompileDependsOn>ForceCompile;$(CoreCompileDependsOn)</CoreCompileDependsOn>
-  </PropertyGroup>
-  
-  <Target Name="ForceCompile" BeforeTargets="CoreCompile"
-          Inputs="page.html" Outputs="$(BaseIntermediateOutputPath)page.g.cs">
-    <WriteLinesToFile File="$(BaseIntermediateOutputPath)page.g.cs" Lines="" />
-    <ItemGroup>
-      <Compile Include="$(BaseIntermediateOutputPath)page.g.cs" />
-    </ItemGroup>
-  </Target>
 
 </Project>

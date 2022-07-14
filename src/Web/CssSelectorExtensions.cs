@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Xml.Xsl;
 
-namespace Devlooped.Xml.Css;
+namespace Devlooped.Web;
 
 /// <summary>
 /// Provides extension methods for <see cref="XNode"/> that allow selecting 

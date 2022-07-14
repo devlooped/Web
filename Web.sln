@@ -5,12 +5,12 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "src\Tests\Tests.csproj", "{2E8FE01D-35EB-49E2-B693-490F4ABFDD5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Css", "src\Css\Css.csproj", "{442D46AA-C4DC-4AEE-826B-CE98A9C6F837}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{442D46AA-C4DC-4AEE-826B-CE98A9C6F837}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2D75BE9-587E-46CC-BFE4-D5BA538E325A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		global.json = global.json
+		.netconfig = .netconfig
 		readme.md = readme.md
 	EndProjectSection
 EndProject

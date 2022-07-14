@@ -162,3 +162,8 @@
 	sha = 9a1b07589b9bde93bc12528e9325712a32dec418
 	etag = b54216ac431a83ce5477828d391f02046527e7f6fffd21da1d03324d352c3efb
 	weak
+[file "src/Web/System/Xml/XmlWrappingReader.cs"]
+	url = https://github.com/devlooped/catbag/blob/main/System/Xml/XmlWrappingReader.cs
+	sha = b1f3e12a7107dc81de53fd0a962bd4a149ab1ef7
+	etag = b2c97f61df993f05a7d6e3627ab10e7933528ad33d91be4ac16323756c522b6b
+	weak
