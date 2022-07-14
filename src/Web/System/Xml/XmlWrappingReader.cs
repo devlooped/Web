@@ -80,21 +80,6 @@ namespace System.Xml
         public override bool Read() => BaseReader.Read();
 
         /// <summary>
-        /// See <see cref="XmlReader.ReadAsync"/>.
-        /// </summary>
-        public override Task<bool> ReadAsync() => BaseReader.ReadAsync();
-
-        /// <summary>
-        /// See <see cref="XmlReader.Skip"/>.
-        /// </summary>
-        public override void Skip() => BaseReader.Skip();
-
-        /// <summary>
-        /// See <see cref="XmlReader.SkipAsync"/>.
-        /// </summary>
-        public override Task SkipAsync() => BaseReader.SkipAsync();
-
-        /// <summary>
         /// See <see cref="XmlReader.Close"/>.
         /// </summary>
         public override void Close() => BaseReader.Close();

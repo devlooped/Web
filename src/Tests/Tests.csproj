@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Devlooped.Tests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,13 +16,11 @@
   <ItemGroup>
     <Using Include="Xunit" />
     <Using Include="Xunit.Abstractions" />
-    <Using Include="Devlooped.Xml.Css" />
-    <Using Include="Devlooped.Html" />
+    <Using Include="Devlooped.Web" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Css\Css.csproj" />
-    <ProjectReference Include="..\Html\Html.csproj" />
+    <ProjectReference Include="..\Web\Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,12 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Devlooped.Xml.Css</PackageId>
-    <AssemblyName>Devlooped.Xml.Css</AssemblyName>
-    <RootNamespace>$(AssemblyName)</RootNamespace>
-    <PackageProjectUrl>https://clarius.org/css</PackageProjectUrl>
+    <PackageId>Devlooped.Web</PackageId>
+    <AssemblyName>Devlooped.Web</AssemblyName>
+    <PackageProjectUrl>https://clarius.org/web</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Description>CSS selectors for XLinq, aka Linq to Css</Description>
+    <Description>Read HTML as XML and query it with CSS over XLinq</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +15,7 @@
     <PackageReference Include="NuGetizer" Version="0.8.0" PrivateAssets="all" />
     <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
     <PackageReference Include="Superpower" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Xml.SgmlReader" Version="1.8.25" />
   </ItemGroup>
 
   <ItemGroup>

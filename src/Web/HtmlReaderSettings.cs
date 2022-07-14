@@ -2,7 +2,7 @@
 using System.Xml;
 using Sgml;
 
-namespace Devlooped.Html;
+namespace Devlooped.Web;
 
 /// <summary>
 /// Specifies a set of features to support when loading 

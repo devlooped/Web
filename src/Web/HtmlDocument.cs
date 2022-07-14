@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Sgml;
 
-namespace Devlooped.Html;
+namespace Devlooped.Web;
 
 /// <summary>
 /// Allows loading an HTML document as an <see cref="XDocument"/>.

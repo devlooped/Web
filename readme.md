@@ -1,11 +1,15 @@
-![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/img/icon-32.png) XLinq to Css
+﻿![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/img/icon-32.png) HTML => XML + CSS with XLinq 🤘
 ============
 
 [![Version](https://img.shields.io/nuget/vpre/Devlooped.Xml.Css.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Xml.Css)
 [![Downloads](https://img.shields.io/nuget/dt/Devlooped.Xml.Css.svg?color=green)](https://www.nuget.org/packages/Devlooped.Xml.Css)
 [![License](https://img.shields.io/github/license/devlooped/css.svg?color=blue)](https://github.com/devlooped/css/blob/main/license.txt)
 
-Implements CSS selectors for XLinq.
+Read HTML as XML and query it with CSS over XLinq. 
+
+No need to learn an entirely new object model for a page 🤘. 
+This makes it the most productive and lean library for web 
+scraping using the latest and greatest that .NET can offer.
 
 # Usage
 
@@ -16,8 +20,19 @@ using Devlooped.Web;
 XDocument page = HtmlDocument.Load("page.html")
 IEnumerable<XElement> elements = page.CssSelectElements("div.menuitem");
 
-XElement title = page.CssSelectElement("div[role=alert]");
+XElement title = page.CssSelectElement("html head meta[name=title]");
 ```
+
+By default, `HtmlDocument.Load` will skip non-content elements `script` and 
+`style`, turn all element names into lower case, and ignore all XML namespaces 
+(useful when loading XHTML, for example) for easier querying. These options 
+as well as granular whitespace handling can be configured using the overloads 
+receiving an `HtmlReaderSettings`.
+
+The underlying parsing is performed by the amazing [SgmlReader](https://www.nuget.org/packages/Microsoft.Xml.SgmlReader) 
+library by Microsoft's [Chris Lovett](http://lovettsoftware.com/).
+
+## CSS
 
 At the moment, supports the following CSS selector features: 
 
