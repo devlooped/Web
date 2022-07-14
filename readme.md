@@ -1,4 +1,4 @@
-﻿![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/img/icon-32.png) HTML => XML + CSS with XLinq 🤘
+﻿![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/icon.png) HTML => XML + CSS with XLinq 🤘
 ============
 
 [![Version](https://img.shields.io/nuget/vpre/Devlooped.Xml.Css.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Xml.Css)
