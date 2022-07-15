@@ -1,8 +1,8 @@
 # Changelog
 
-## [v1.0.0-beta](https://github.com/devlooped/web/tree/v1.0.0-beta) (2022-07-15)
+## [v1.0.0](https://github.com/devlooped/web/tree/v1.0.0) (2022-07-15)
 
-[Full Changelog](https://github.com/devlooped/web/compare/23dbc1d83526813ee629825930bdda91276be196...v1.0.0-beta)
+[Full Changelog](https://github.com/devlooped/web/compare/23dbc1d83526813ee629825930bdda91276be196...v1.0.0)
 
 :sparkles: Implemented enhancements:
 
