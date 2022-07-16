@@ -1,9 +1,9 @@
-﻿![Icon](https://raw.githubusercontent.com/devlooped/css/main/assets/icon.png) HTML => XML + CSS with XLinq 🤘
+﻿![Icon](https://raw.githubusercontent.com/devlooped/web/main/assets/icon.png) HTML => XML + CSS with XLinq 🤘
 ============
 
-[![Version](https://img.shields.io/nuget/vpre/Devlooped.Xml.Css.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Xml.Css)
-[![Downloads](https://img.shields.io/nuget/dt/Devlooped.Xml.Css.svg?color=green)](https://www.nuget.org/packages/Devlooped.Xml.Css)
-[![License](https://img.shields.io/github/license/devlooped/css.svg?color=blue)](https://github.com/devlooped/css/blob/main/license.txt)
+[![Version](https://img.shields.io/nuget/vpre/Devlooped.Web.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Web)
+[![Downloads](https://img.shields.io/nuget/dt/Devlooped.Web.svg?color=green)](https://www.nuget.org/packages/Devlooped.Web)
+[![License](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
 
 Read HTML as XML and query it with CSS over XLinq. 
 
@@ -78,8 +78,8 @@ Non-CSS features:
 
 # Dogfooding
 
-[![CI Version](https://img.shields.io/endpoint?url=https://shields.kzu.io/vpre/Devlooped.Xml.Css/main&label=nuget.ci&color=brightgreen)](https://pkg.kzu.io/index.json)
-[![Build](https://github.com/devlooped/css/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/css/actions)
+[![CI Version](https://img.shields.io/endpoint?url=https://shields.kzu.io/vpre/Devlooped.Web/main&label=nuget.ci&color=brightgreen)](https://pkg.kzu.io/index.json)
+[![Build](https://github.com/devlooped/web/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/web/actions)
 
 We also produce CI packages from branches and pull requests so you can dogfood builds as quickly as they are produced. 
 
