@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="Devlooped.Tests" />
-    <None Include="..\..\readme.md" PackagePath="readme.md" />
   </ItemGroup>
   
 </Project>

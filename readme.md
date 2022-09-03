@@ -5,6 +5,7 @@
 [![Downloads](https://img.shields.io/nuget/dt/Devlooped.Web.svg?color=green)](https://www.nuget.org/packages/Devlooped.Web)
 [![License](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
 
+<!-- #content -->
 Read HTML as XML and query it with CSS over XLinq. 
 
 No need to learn an entirely new object model for a page 🤘. 
@@ -31,6 +32,29 @@ receiving an `HtmlReaderSettings`.
 
 The underlying parsing is performed by the amazing [SgmlReader](https://www.nuget.org/packages/Microsoft.Xml.SgmlReader) 
 library by Microsoft's [Chris Lovett](http://lovettsoftware.com/).
+
+In addition, the following extension methods make it easier to work 
+with XML documents where you want to query with CSS or XPath without 
+having to deal with XML namespaces:
+
+```csharp
+using System.Xml;
+using System.Xml.Linq;
+using Devlooped.Web;
+
+var doc = XDocument.Load("doc.xml")
+// Will remove all xmlns declarations, and allow querying elements 
+// as if none had namespaces, returns the root element
+XElement nons = doc.RemoveNamespaces();
+
+// Alternatively, you can also ignore at the XmlReader level
+using var reader = XmlReader.Create("doc.xml").IgnoreNamespaces();
+doc = XDocument.Load(reader);
+
+// Finally, you can also skip elements at the reader level
+using var reader = XmlReader.Create("doc.xml").SkipElements("foo", "bar");
+doc = XDocument.Load(reader);
+```
 
 ## CSS
 
@@ -76,6 +100,8 @@ Non-CSS features:
     * `[text()*=val]`: Represents an element whose text contents contains at least one instance of the 
        substring "val". If "val" is the empty string then the selector does not represent anything.
 
+<!-- #content -->
+
 # Dogfooding
 
 [![CI Version](https://img.shields.io/endpoint?url=https://shields.kzu.io/vpre/Devlooped.Web/main&label=nuget.ci&color=brightgreen)](https://pkg.kzu.io/index.json)
@@ -91,6 +117,7 @@ The versioning scheme for packages is:
 - Branch builds: *42.42.42-*`[BRANCH]`.`[COMMITS]`
 
 
+<!-- #sponsors -->
 <!-- include docs/footer.md -->
 # Sponsors 
 
