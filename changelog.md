@@ -1,5 +1,27 @@
 # Changelog
 
+## [v1.1.0-beta](https://github.com/devlooped/web/tree/v1.1.0-beta) (2022-09-04)
+
+[Full Changelog](https://github.com/devlooped/web/compare/v1.0.1...v1.1.0-beta)
+
+:sparkles: Implemented enhancements:
+
+- Expose XML namespace removal and element skipping as a public feature [\#64](https://github.com/devlooped/web/issues/64)
+
+:twisted_rightwards_arrows: Merged:
+
+- Add XML namespace removal and element skipping extensions [\#65](https://github.com/devlooped/web/pull/65) (@kzu)
+
+## [v1.0.1](https://github.com/devlooped/web/tree/v1.0.1) (2022-08-08)
+
+[Full Changelog](https://github.com/devlooped/web/compare/v1.0.0...v1.0.1)
+
+:twisted_rightwards_arrows: Merged:
+
+- +M▼ includes [\#57](https://github.com/devlooped/web/pull/57) (@github-actions[bot])
+- +M▼ includes [\#54](https://github.com/devlooped/web/pull/54) (@github-actions[bot])
+- +M▼ includes [\#52](https://github.com/devlooped/web/pull/52) (@github-actions[bot])
+
 ## [v1.0.0](https://github.com/devlooped/web/tree/v1.0.0) (2022-07-15)
 
 [Full Changelog](https://github.com/devlooped/web/compare/23dbc1d83526813ee629825930bdda91276be196...v1.0.0)
