@@ -21,5 +21,9 @@
   <ItemGroup>
     <InternalsVisibleTo Include="Devlooped.Tests" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeAnalysis\CodeAnalysis.csproj" ReferenceOutputAssembly="false" OutputItemType="None" />
+  </ItemGroup>
   
 </Project>
