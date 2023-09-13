@@ -1,5 +1,6 @@
 [file]
 	url = https://github.com/devlooped/oss
+	url = https://github.com/clarius/pages
 [file ".netconfig"]
 	url = https://github.com/devlooped/oss/blob/main/.netconfig
 	skip
@@ -67,9 +68,9 @@
 	etag = 6a6c6e1d3895df953abf14c82b0899e3eea75cdcd679f6212dcfea15183d73d6
 	weak
 [file "_config.yml"]
-	url = https://github.com/devlooped/oss/blob/main/_config.yml
-	sha = fa83a5161ba52bc5d510ce0ba75ee0b1f8d4bc63
-	etag = 9139148f845adf503fd3c3c140eb64421fc476a1f9c027fc50825c0efb05f557
+	url = https://github.com/clarius/pages/blob/main/_config.yml
+	sha = 6ae337f3705603ae94f70d7dc717bf9057b5b07d
+	etag = 634a1bfa0233a691cfdca5f4079414f72de30311c4a62b024bdd151c50abde20
 	weak
 [file "assets/css/style.scss"]
 	url = https://github.com/devlooped/oss/blob/main/assets/css/style.scss
@@ -135,4 +136,14 @@
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/sponsor.yml
 	sha = 8990ebb36199046e0b8098bad9e46dcef739c56e
 	etag = e1dc114d2e8b57d50649989d32dbf0c9080ec77da3738a4cc79e9256d6ca5d3e
+	weak
+[file ".github/workflows/pages.yml"]
+	url = https://github.com/clarius/pages/blob/main/.github/workflows/pages.yml
+	sha = afcb0421af6507eba5ceba913b8fc37261efc085
+	etag = c52b3f0463b88abf696ddf2c6902675e0bc9d1e812bb317cb758221d75330b56
+	weak
+[file "Gemfile"]
+	url = https://github.com/clarius/pages/blob/main/Gemfile
+	sha = 565a77f40db0863cb47ceb36f88790259a697c91
+	etag = 24e482e91192e292b633e3c17c4f095286ffb5a041d299d761b2e6ef99ee7669
 	weak
