@@ -34,13 +34,13 @@
 	weak
 [file ".github/dependabot.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/dependabot.yml
-	sha = 35ca3f3405452465058d89005f8a88a65847c377
-	etag = f8080f8f04d87529e90d9a66751d304a7141196fb9734aa2d110784e52e66898
+	sha = 49661dbf0720cde93eb5569be7523b5912351560
+	etag = c147ea2f3431ca0338c315c4a45b56ee233c4d30f8d6ab698d0e1980a257fd6a
 	weak
 [file ".github/workflows/build.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/build.yml
-	sha = 13d67e2cf3f786c8189364fd29332aaa7dc575dc
-	etag = c616df0877fba60002ccfc0397e9f731ddb22acbbb195a0598fedd4cac5f3135
+	sha = 97ebd189e44da857e53e4d98af2727dd9dcb0740
+	etag = f02775f5cdf8ba06238500e56bc25ca1e0aa329db4931f230c45bd1d7de1696d
 	weak
 [file ".github/workflows/changelog.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/changelog.yml
@@ -49,18 +49,18 @@
 	weak
 [file ".github/workflows/dotnet-file.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/dotnet-file.yml
-	sha = f08c3f28e46e28eb31e70846d65e57aa9553ce56
-	etag = 567444486383d032c1c5fbc538f07e860f92b1d08c66ac6ffb1db64ca539251c
+	sha = 11a331d50be517c29df5ab1358ef354d8871d59a
+	etag = de115efac25b63d561d8b2ffcba3e7710bfef7bfefecb811ea943b6f2bd8de96
 	weak
 [file ".github/workflows/publish.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/publish.yml
-	sha = d3022567c9ef2bc9461511e53b8abe065afdf03b
-	etag = 58601b5a71c805647ab26e84053acdfb8d174eaa93330487af8a5503753c5707
+	sha = 97ebd189e44da857e53e4d98af2727dd9dcb0740
+	etag = 04a0796e61476765c0a233806e85fb3f461d7cf099a14c91e6c5abcab938062f
 	weak
 [file ".gitignore"]
 	url = https://github.com/devlooped/oss/blob/main/.gitignore
-	sha = b87a8a795a4c2b6830602225c066c11108552a99
-	etag = 96e0860052044780f1fc9e3bdfbee09d82d5dddb8b1217d67460fc7330a64dd8
+	sha = 02811fa23b0a102b9b33048335d41e515bf75737
+	etag = a9c37ae312afac14b78436a7d018af4483d88736b5f780576f2c5a0b3f14998c
 	weak
 [file "Directory.Build.rsp"]
 	url = https://github.com/devlooped/oss/blob/main/Directory.Build.rsp
@@ -84,13 +84,13 @@
 	weak
 [file "src/Directory.Build.props"]
 	url = https://github.com/devlooped/oss/blob/main/src/Directory.Build.props
-	sha = 6ae80a175a8f926ac5d9ffb0f6afd55d85cc9320
-	etag = 69d4b16c14d5047b3ed812dbf556b0b8d77deb86f73af04b9bd3640220056fa8
+	sha = 6dfe21fbd4a8390448958c714f8e9006fc4ac3ca
+	etag = de7c6b643bac2fc6651fa08f69d628cbbe12e7050829b981ac771e1b9ccccd89
 	weak
 [file "src/Directory.Build.targets"]
 	url = https://github.com/devlooped/oss/blob/main/src/Directory.Build.targets
-	sha = 5cec43dd514aeb9050ea2ccbc546f7afa428c5b5
-	etag = 8e0f43f00e0c29b408d4ce5c821b44a9bf7dbc8d4917895cfc39f2964d839bf6
+	sha = 1bf1eacc7ac3920d52c8e7045bfa34abc7c05302
+	etag = 7cb1421f00d9f6f4c00f0ca98e485dcadb927cfa6b3f0b5d4fb212525d2ce9c0
 	weak
 [file "src/kzu.snk"]
 	url = https://github.com/devlooped/oss/blob/main/src/kzu.snk
@@ -99,8 +99,8 @@
 	weak
 [file "src/nuget.config"]
 	url = https://github.com/devlooped/oss/blob/main/src/nuget.config
-	sha = b2fa09bd9db6de89e37a8ba6705b5659e435dafd
-	etag = eb2d09e546aa1e11c0b464d9ed6ab2d3c028a1d86c3ac40a318053625fb72819
+	sha = 0d911c2aa865d2f774917a02da51a9ed3d0d2b56
+	etag = e279911631ae6fa45ba6bd980d0674fc5a95d5793493425ff8ce4a8f2407a213
 	weak
 [file ".github/workflows/test/action.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/test/action.yml
@@ -114,8 +114,8 @@
 	weak
 [file ".github/workflows/includes.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/includes.yml
-	sha = ac753b791d03997eb655efb26ae141b51addd1c0
-	etag = fcd94a08ac9ebc0e8351deac4e7f085cf8ef67816cc50006e068f44166096eb8
+	sha = 11a8757c0012f0d454370823e1cda51398f4337e
+	etag = 73426a1361c9d298b5794c99d774043b8e9425bda759bb769fdaa025636d6e3c
 	weak
 [file ".github/workflows/combine-prs.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/combine-prs.yml
