@@ -6,7 +6,7 @@
     <AssemblyName>Devlooped.Web</AssemblyName>
     <PackageProjectUrl>https://clarius.org/web</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Description>Read HTML as XML and query it with CSS over XLinq</Description>
+    <Description>Read HTML as XML and query it with CSS over XLinq: the most productive and lean library for web scraping using the latest and greatest that .NET can offer.</Description>
   </PropertyGroup>
 
   <ItemGroup>
