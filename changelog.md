@@ -1,10 +1,14 @@
 # Changelog
 
+## [v1.2.1](https://github.com/devlooped/Web/tree/v1.2.1) (2024-05-30)
+
+[Full Changelog](https://github.com/devlooped/Web/compare/v1.2.0...v1.2.1)
+
 ## [v1.2.0](https://github.com/devlooped/Web/tree/v1.2.0) (2023-08-11)
 
 [Full Changelog](https://github.com/devlooped/Web/compare/v1.1.1...v1.2.0)
 
-:twisted_rightwards_arrows: Merged:
+:bug: Fixed bugs:
 
 - Remove current implementation of SponsorLink for now [\#106](https://github.com/devlooped/Web/pull/106) (@kzu)
 
