@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
 
 <!-- #content -->
-Read HTML as XML and query it with CSS over XLinq. 
+Read HTML as XML and query it with CSS over XLinq (or HtmlAgilityPack killer 😉). 
 
 No need to learn an entirely new object model for a page 🤘. 
 This makes it the most productive and lean library for web 
