@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.2.3](https://github.com/devlooped/Web/tree/v1.2.3) (2024-10-09)
+
+[Full Changelog](https://github.com/devlooped/Web/compare/v1.2.2...v1.2.3)
+
+:twisted_rightwards_arrows: Merged:
+
+- Attempt to improve SEO by adding to description/readme [\#137](https://github.com/devlooped/Web/pull/137) (@kzu)
+
 ## [v1.2.2](https://github.com/devlooped/Web/tree/v1.2.2) (2024-05-30)
 
 [Full Changelog](https://github.com/devlooped/Web/compare/v1.2.1...v1.2.2)
