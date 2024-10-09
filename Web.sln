@@ -7,13 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "src\Tests\Tests.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{442D46AA-C4DC-4AEE-826B-CE98A9C6F837}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2D75BE9-587E-46CC-BFE4-D5BA538E325A}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.netconfig = .netconfig
-		readme.md = readme.md
-	EndProjectSection
-EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Css", "src\Css\Css.msbuildproj", "{D60954DA-76B9-4AD7-94C2-B85CF239D146}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Html", "src\Html\Html.msbuildproj", "{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}"

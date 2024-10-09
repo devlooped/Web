@@ -7,6 +7,8 @@
 
 <!-- #content -->
 Read HTML as XML and query it with CSS over XLinq (or HtmlAgilityPack killer 😉). 
+Provides `HtmlDocument.Load` and `CssSelectElement(s)` extension methods 
+for `XDocument`/`XElement`.
 
 No need to learn an entirely new object model for a page 🤘. 
 This makes it the most productive and lean library for web 
