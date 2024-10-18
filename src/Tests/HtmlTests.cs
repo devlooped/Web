@@ -98,5 +98,19 @@ public record HtmlTests(ITestOutputHelper Output)
         Assert.Equal("Wikipedia", central?.Value);
     }
 
+    [Fact]
+    public void HasCssClass()
+    {
+        // We wrap the doc with hml>body automatically, so we need to select the div
+        var div = HtmlDocument.Parse(
+            """
+            <div class="foo bar baz" />
+            """)
+            .CssSelectElement("div");
+
+        Assert.True(div.HasClass("foo"));
+        Assert.True(div.HasClass("bar"));
+    }
+
     string File(string path) => new Uri("file://" + new FileInfo(path).FullName).AbsoluteUri;
 }
