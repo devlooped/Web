@@ -49,6 +49,15 @@ public static class CssSelectorExtensions
         return node.XPathSelectElements(xpath, new CssContext());
     }
 
+    /// <summary>
+    /// Determines whether the <see cref="XNode"/> has the specified class.
+    /// </summary>
+    public static bool HasClass(this XNode? node, string className)
+    {
+        var element = node as XElement;
+        return element?.Attribute("class")?.Value.Split(' ').Contains(className) ?? false;
+    }
+
     // The custom context allows resolving the fn:sum which properly implements the XPath 2.0 fn:sum
     // see https://www.w3.org/TR/xquery-operators/#func-sum.
     class CssContext : XsltContext
