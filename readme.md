@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
 
 <!-- #content -->
+<!-- include https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
+
 Read HTML as XML and query it with CSS over XLinq (or HtmlAgilityPack killer 😉). 
 Provides `HtmlDocument.Load` and `CssSelectElement(s)` extension methods 
 for `XDocument`/`XElement`.
