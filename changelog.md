@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.3.0](https://github.com/devlooped/Web/tree/v1.3.0) (2024-10-21)
+
+[Full Changelog](https://github.com/devlooped/Web/compare/v1.2.3...v1.3.0)
+
+:sparkles: Implemented enhancements:
+
+- Add HasClass extension method [\#138](https://github.com/devlooped/Web/pull/138) (@kzu)
+
+:twisted_rightwards_arrows: Merged:
+
+- Add SponsorLink v2 [\#140](https://github.com/devlooped/Web/pull/140) (@kzu)
+
 ## [v1.2.3](https://github.com/devlooped/Web/tree/v1.2.3) (2024-10-09)
 
 [Full Changelog](https://github.com/devlooped/Web/compare/v1.2.2...v1.2.3)
