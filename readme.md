@@ -7,6 +7,10 @@
 
 <!-- #content -->
 <!-- include https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
+*This project uses [SponsorLink](https://github.com/devlooped#sponsorlink) 
+and may issue IDE-only warnings if no active sponsorship is detected.*
+
+<!-- https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
 
 Read HTML as XML and query it with CSS over XLinq (or HtmlAgilityPack killer 😉). 
 Provides `HtmlDocument.Load` and `CssSelectElement(s)` extension methods 
