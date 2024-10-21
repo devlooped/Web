@@ -11,7 +11,7 @@ Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Css", "src\Css\Css.msbuildp
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Html", "src\Html\Html.msbuildproj", "{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeAnalysis", "src\CodeAnalysis\CodeAnalysis.csproj", "{622A2825-0C12-4CE0-9F55-CE35A0995F93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyzers", "src\Analyzers\Analyzers.csproj", "{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{622A2825-0C12-4CE0-9F55-CE35A0995F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{622A2825-0C12-4CE0-9F55-CE35A0995F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{622A2825-0C12-4CE0-9F55-CE35A0995F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{622A2825-0C12-4CE0-9F55-CE35A0995F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

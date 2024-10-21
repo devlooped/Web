@@ -11,10 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="NuGetizer" Version="1.2.1" PrivateAssets="all" />
-    <PackageReference Include="PolySharp" Version="1.14.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
     <PackageReference Include="Superpower" Version="3.0.0" />
     <PackageReference Include="Microsoft.Xml.SgmlReader" Version="1.8.30" />
   </ItemGroup>
@@ -24,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\CodeAnalysis\CodeAnalysis.csproj" ReferenceOutputAssembly="false" OutputItemType="None" />-->
+    <ProjectReference Include="..\Analyzers\Analyzers.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
   
 </Project>

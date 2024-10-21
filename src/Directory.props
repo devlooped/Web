@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <Product>Devlooped.Web</Product>
+    <RootNamespace>Devlooped.Web</RootNamespace>
+
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+</Project>
