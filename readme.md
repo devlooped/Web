@@ -113,7 +113,7 @@ Non-CSS features:
 # Dogfooding
 
 [![CI Version](https://img.shields.io/endpoint?url=https://shields.kzu.io/vpre/Devlooped.Web/main&label=nuget.ci&color=brightgreen)](https://pkg.kzu.io/index.json)
-[![Build](https://github.com/devlooped/web/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/web/actions)
+[![Build](https://github.com/devlooped/web/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/devlooped/web/actions)
 
 We also produce CI packages from branches and pull requests so you can dogfood builds as quickly as they are produced. 
 
