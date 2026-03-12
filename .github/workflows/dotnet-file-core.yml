@@ -2,6 +2,13 @@
 name: dotnet-file-core
 on:
   workflow_call:
+    secrets:
+      BOT_NAME:
+        required: false
+      BOT_EMAIL:
+        required: false
+      GH_TOKEN:
+        required: false
 
 env:
   DOTNET_NOLOGO: true
@@ -72,7 +79,7 @@ jobs:
           validate: false
 
       - name: ✍ pull request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           base: main
           branch: dotnet-file-sync
