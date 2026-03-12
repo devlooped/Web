@@ -2,7 +2,7 @@
 
 namespace Devlooped.Tests;
 
-public record CssParserTests(ITestOutputHelper Console)
+public class CssParserTests(ITestOutputHelper output)
 {
     [Fact]
     public void CanParseUniversalSelector()

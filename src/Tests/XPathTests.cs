@@ -5,7 +5,7 @@ using Superpower;
 
 namespace Devlooped.Tests;
 
-public record XPathTests(ITestOutputHelper Console)
+public class XPathTests(ITestOutputHelper output)
 {
     [InlineData("foo", ".//foo")]
     [InlineData(".foo", ".//*[contains(concat(\" \",normalize-space(@class),\" \"),\" foo \")]")]
@@ -20,7 +20,7 @@ public record XPathTests(ITestOutputHelper Console)
     {
         var result = Parser.Parse(css).ToXPath();
         if (result != xpath)
-            Console.WriteLine(result);
+            output.WriteLine(result);
 
         Assert.Equal(xpath, result);
     }
@@ -75,7 +75,7 @@ public record XPathTests(ITestOutputHelper Console)
             .Select(x => x.Value));
 
         if (!expected.Equals(actual))
-            Console.WriteLine($"{expression} > {Parser.Parse(expression).ToXPath()}");
+            output.WriteLine($"{expression} > {Parser.Parse(expression).ToXPath()}");
 
         Assert.Equal(expected, actual);
     }
@@ -126,6 +126,6 @@ public record XPathTests(ITestOutputHelper Console)
     public void RenderExpression()
     {
         var expression = "*[text()$=\"to go\"]";
-        Console.WriteLine(Parser.Parse(expression).ToXPath());
+        output.WriteLine(Parser.Parse(expression).ToXPath());
     }
 }

@@ -19,7 +19,7 @@ public sealed class HtmlReaderSettings
     {
         CaseFolding = CaseFolding.ToLower,
         IgnoreXmlNamespaces = true,
-        SkipElements = new string[] { "script", "style" },
+        SkipElements = ["script", "style"],
     };
 
     /// <summary>

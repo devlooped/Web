@@ -2,9 +2,9 @@
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Tests;
+namespace Devlooped.Tests;
 
-public record XmlTests(ITestOutputHelper Output)
+public class XmlTests(ITestOutputHelper output)
 {
     [Fact]
     public void RemoveNamespacesFromElement()

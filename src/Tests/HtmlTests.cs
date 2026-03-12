@@ -1,18 +1,16 @@
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.XPath;
-using Devlooped.Web;
 
 namespace Devlooped.Tests;
 
-public record HtmlTests(ITestOutputHelper Output)
+public partial class HtmlTests(ITestOutputHelper output)
 {
     [Fact]
     public void Render()
     {
         var doc = HtmlDocument.Load(File("sample.html"));
 
-        Output.WriteLine(doc.ToString());
+        output.WriteLine(doc.ToString());
     }
 
     [Fact]
