@@ -1,17 +1,14 @@
 ![Icon](https://raw.githubusercontent.com/devlooped/web/main/assets/icon.png) HTML => XML + CSS with XLinq 🤘
 ============
 
+[![EULA](https://img.shields.io/badge/EULA-OSMF-blue?labelColor=black&color=C9FF30)](osmfeula.txt)
+[![OSS](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
 [![Version](https://img.shields.io/nuget/vpre/Devlooped.Web.svg?color=royalblue)](https://www.nuget.org/packages/Devlooped.Web)
 [![Downloads](https://img.shields.io/nuget/dt/Devlooped.Web.svg?color=green)](https://www.nuget.org/packages/Devlooped.Web)
-[![License](https://img.shields.io/github/license/devlooped/web.svg?color=blue)](https://github.com/devlooped/web/blob/main/license.txt)
+
+<!-- include https://github.com/devlooped/.github/raw/main/osmf.md -->
 
 <!-- #content -->
-<!-- include https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
-*This project uses [SponsorLink](https://github.com/devlooped#sponsorlink) 
-and may issue IDE-only warnings if no active sponsorship is detected.*
-
-<!-- https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
-
 Read HTML as XML and query it with CSS over XLinq (or HtmlAgilityPack killer 😉). 
 Provides `HtmlDocument.Load` and `CssSelectElement(s)` extension methods 
 for `XDocument`/`XElement`.

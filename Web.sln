@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31612.314
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11527.330 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "src\Tests\Tests.csproj", "{2E8FE01D-35EB-49E2-B693-490F4ABFDD5D}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Css", "src\Css\Css.msbuildproj", "{D60954DA-76B9-4AD7-94C2-B85CF239D146}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Html", "src\Html\Html.msbuildproj", "{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyzers", "src\Analyzers\Analyzers.csproj", "{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82AA3B56-E65A-46D2-9072-5F7D9E5B7D7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6F620A9-4D5E-49AA-8A00-451C5502EFC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
