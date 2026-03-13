@@ -144,9 +144,7 @@
 	weak
 [file ".github/actions/dotnet/action.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/actions/dotnet/action.yml
-	sha = f2b690ce307acb76c5b8d7faec1a5b971a93653e
-	etag = 27ea11baa2397b3ec9e643a935832da97719c4e44215cfd135c49cad4c29373f
-	weak
+	skip
 [file ".github/workflows/dotnet-env.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/dotnet-env.yml
 	sha = 77e83f238196d2723640abef0c7b6f43994f9747
@@ -154,11 +152,7 @@
 	weak
 [file ".github/workflows/dotnet-file-core.yml"]
 	url = https://github.com/devlooped/oss/blob/main/.github/workflows/dotnet-file-core.yml
-	sha = d00364faaa84c414b868c0758b9e1a5fc0520dcc
-	etag = d3b7d8ca69e6d22066a2348f02b409e2d6fb900f5039f68940c14e4ce6021826
-	weak
+	skip
 [file "src/nuget.config"]
 	url = https://github.com/devlooped/oss/blob/main/src/nuget.config
-	sha = 032439dbf180fca0539a5bd3a019f18ab3484b76
-	etag = da7c0104131bd474b52fc9bc9f9bda6470e24ae38d4fb9f5c4f719bc01370ab5
-	weak
+	skip
