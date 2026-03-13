@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.4.0](https://github.com/devlooped/Web/tree/v1.4.0) (2026-03-13)
+
+[Full Changelog](https://github.com/devlooped/Web/compare/v1.3.0...v1.4.0)
+
+:hammer: Other:
+
+- Adopting SponsorLink in v1.3.0+ [\#139](https://github.com/devlooped/Web/issues/139)
+
+:twisted_rightwards_arrows: Merged:
+
+- Drop SponsorLink, adopt OSMF [\#154](https://github.com/devlooped/Web/pull/154) (@kzu)
+
 ## [v1.3.0](https://github.com/devlooped/Web/tree/v1.3.0) (2024-10-21)
 
 [Full Changelog](https://github.com/devlooped/Web/compare/v1.2.3...v1.3.0)
